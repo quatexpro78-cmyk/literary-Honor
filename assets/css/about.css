@@ -329,7 +329,9 @@
 }
 
 .founder-media img {
-    object-position: center 27%;
+    object-fit: contain;
+    object-position: center center;
+    background: #050505;
     filter: saturate(0.78) contrast(1.04);
 }
 
@@ -1983,4 +1985,3 @@
         transform: none;
     }
 }
-
