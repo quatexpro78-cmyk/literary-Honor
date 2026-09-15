@@ -1,0 +1,1009 @@
+<!-- =========================================================
+     LITERARY ARCHIVE PAGE
+     START - COMPLETE HTML
+     ========================================================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Literary Archive | Literary Honors</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- MAIN WEBSITE CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- LITERARY ARCHIVE PAGE CSS -->
+    <link rel="stylesheet" href="assets/css/literary-archive.css">
+</head>
+
+<body class="archive-page">
+
+    <header class="site-header">
+        <div class="site-container header-inner">
+            <nav class="main-navigation" aria-label="Main navigation">
+                <a class="navigation-link" href="index.html#home">Home</a>
+                <a class="navigation-link" href="about.html">About</a>
+                <a class="navigation-link" href="awards.html">Awards</a>
+                <a class="navigation-link" href="categories.html">Categories</a>
+                <a class="navigation-link" href="judging.html">Judging</a>
+                <a class="navigation-link active" href="literary-archive.html" aria-current="page">Literary Archive</a>
+                <a class="navigation-link" href="winners.html">Winners</a>
+                <a class="header-cta" href="submit.html">Submit Your Book</a>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- =====================================================
+         HERO SECTION
+         ===================================================== -->
+
+    <main>
+
+        <section class="archive-page-hero">
+
+            <!-- Soft background golden atmosphere -->
+            <div class="archive-hero-light"></div>
+
+            <!-- Hero Card -->
+            <div class="archive-page-hero-content">
+
+                <!-- =================================================
+                     IMPORTANT:
+                     THIS IS THE NEW GOLDEN SHINE BEAM
+                     ================================================= -->
+                <span class="archive-hero-shine" aria-hidden="true"></span>
+
+
+                <div class="archive-page-hero-label">
+                    THE LITERARY HONORS COLLECTION
+                </div>
+
+
+                <h1>
+                    Literary <span>Archive</span>
+                </h1>
+
+
+                <p>
+                    Explore a curated collection of remarkable books
+                    recognized for their originality, craftsmanship,
+                    impact, and contribution to literature.
+                </p>
+
+
+                <!-- Search -->
+                <form class="archive-search" id="archiveSearchForm">
+
+                    <input
+                        type="text"
+                        id="archiveSearchInput"
+                        placeholder="Search books, authors or categories..."
+                        autocomplete="off"
+                    >
+
+                    <button type="submit" id="archiveSearchButton">
+                        SEARCH
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             INTRO SECTION
+             ===================================================== -->
+
+        <section class="archive-page-intro">
+
+            <div class="archive-page-intro-content">
+
+                <div>
+
+                    <span class="section-label">
+                        OUR COLLECTION
+                    </span>
+
+                    <h2>
+                        Celebrating
+                        <span>Remarkable Books</span>
+                    </h2>
+
+                </div>
+
+
+                <p class="archive-page-intro-copy">
+
+                    The Literary Archive brings together books that
+                    represent distinctive voices, meaningful ideas,
+                    exceptional storytelling, and memorable reading
+                    experiences.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             ARCHIVE COLLECTION
+             ===================================================== -->
+
+        <section class="archive-collection">
+
+            <div class="archive-collection-header">
+
+                <div class="archive-collection-header-left">
+
+                    <span class="section-label">
+                        THE ARCHIVE
+                    </span>
+
+                    <h2>
+                        Featured
+                        <span>Books</span>
+                    </h2>
+
+                    <div
+                        class="archive-collection-count"
+                        id="archiveBookCount"
+                    >
+                        12 BOOKS
+                    </div>
+
+                </div>
+
+
+                <!-- FILTERS -->
+
+                <div class="archive-filters">
+
+                    <button
+                        type="button"
+                        class="archive-filter active"
+                        data-filter="all"
+                    >
+                        ALL
+                    </button>
+
+                    <button
+                        type="button"
+                        class="archive-filter"
+                        data-filter="fiction"
+                    >
+                        FICTION
+                    </button>
+
+                    <button
+                        type="button"
+                        class="archive-filter"
+                        data-filter="non-fiction"
+                    >
+                        NON-FICTION
+                    </button>
+
+                    <button
+                        type="button"
+                        class="archive-filter"
+                        data-filter="poetry"
+                    >
+                        POETRY
+                    </button>
+
+                    <button
+                        type="button"
+                        class="archive-filter"
+                        data-filter="memoir"
+                    >
+                        MEMOIR
+                    </button>
+
+                    <button
+                        type="button"
+                        class="archive-filter"
+                        data-filter="children"
+                    >
+                        CHILDREN
+                    </button>
+
+                    <button
+                        type="button"
+                        class="archive-filter"
+                        data-filter="other"
+                    >
+                        OTHER
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 BOOK GRID
+                 ================================================= -->
+
+            <div
+                class="archive-page-grid"
+                id="archiveBookGrid"
+            >
+
+
+                <!-- BOOK 01 -->
+
+                <article
+                    class="archive-page-card"
+                    data-category="fiction"
+                    data-title="The Story Within"
+                    data-author="Literary Honors"
+                >
+
+                    <div class="archive-page-cover">
+
+                        <div class="archive-cover-placeholder">
+
+                            <div class="archive-cover-placeholder-inner">
+
+                                <small>
+                                    LITERARY HONORS
+                                </small>
+
+                                <strong>
+                                    The Story<br>
+                                    Within
+                                </strong>
+
+                                <span>
+                                    FICTION
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="archive-page-card-info">
+
+                        <span>FICTION</span>
+
+                        <h3>
+                            The Story Within
+                        </h3>
+
+                        <p>
+                            2026
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BOOK 02 -->
+
+                <article
+                    class="archive-page-card"
+                    data-category="non-fiction"
+                    data-title="Beyond The Pages"
+                    data-author="Literary Honors"
+                >
+
+                    <div class="archive-page-cover">
+
+                        <div class="archive-cover-placeholder">
+
+                            <div class="archive-cover-placeholder-inner">
+
+                                <small>
+                                    LITERARY HONORS
+                                </small>
+
+                                <strong>
+                                    Beyond<br>
+                                    The Pages
+                                </strong>
+
+                                <span>
+                                    NON-FICTION
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="archive-page-card-info">
+
+                        <span>NON-FICTION</span>
+
+                        <h3>
+                            Beyond The Pages
+                        </h3>
+
+                        <p>
+                            2026
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BOOK 03 -->
+
+                <article
+                    class="archive-page-card"
+                    data-category="poetry"
+                    data-title="Echoes Of Words"
+                    data-author="Literary Honors"
+                >
+
+                    <div class="archive-page-cover">
+
+                        <div class="archive-cover-placeholder">
+
+                            <div class="archive-cover-placeholder-inner">
+
+                                <small>
+                                    LITERARY HONORS
+                                </small>
+
+                                <strong>
+                                    Echoes<br>
+                                    Of Words
+                                </strong>
+
+                                <span>
+                                    POETRY
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="archive-page-card-info">
+
+                        <span>POETRY</span>
+
+                        <h3>
+                            Echoes Of Words
+                        </h3>
+
+                        <p>
+                            2026
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BOOK 04 -->
+
+                <article
+                    class="archive-page-card"
+                    data-category="memoir"
+                    data-title="A Life Remembered"
+                    data-author="Literary Honors"
+                >
+
+                    <div class="archive-page-cover">
+
+                        <div class="archive-cover-placeholder">
+
+                            <div class="archive-cover-placeholder-inner">
+
+                                <small>
+                                    LITERARY HONORS
+                                </small>
+
+                                <strong>
+                                    A Life<br>
+                                    Remembered
+                                </strong>
+
+                                <span>
+                                    MEMOIR
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="archive-page-card-info">
+
+                        <span>MEMOIR</span>
+
+                        <h3>
+                            A Life Remembered
+                        </h3>
+
+                        <p>
+                            2026
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BOOK 05 -->
+
+                <article
+                    class="archive-page-card"
+                    data-category="children"
+                    data-title="Little Worlds"
+                    data-author="Literary Honors"
+                >
+
+                    <div class="archive-page-cover">
+
+                        <div class="archive-cover-placeholder">
+
+                            <div class="archive-cover-placeholder-inner">
+
+                                <small>
+                                    LITERARY HONORS
+                                </small>
+
+                                <strong>
+                                    Little<br>
+                                    Worlds
+                                </strong>
+
+                                <span>
+                                    CHILDREN'S
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="archive-page-card-info">
+
+                        <span>CHILDREN'S</span>
+
+                        <h3>
+                            Little Worlds
+                        </h3>
+
+                        <p>
+                            2026
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BOOK 06 -->
+
+                <article
+                    class="archive-page-card"
+                    data-category="other"
+                    data-title="The Final Chapter"
+                    data-author="Literary Honors"
+                >
+
+                    <div class="archive-page-cover">
+
+                        <div class="archive-cover-placeholder">
+
+                            <div class="archive-cover-placeholder-inner">
+
+                                <small>
+                                    LITERARY HONORS
+                                </small>
+
+                                <strong>
+                                    The Final<br>
+                                    Chapter
+                                </strong>
+
+                                <span>
+                                    AWARD WINNER
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="archive-page-card-info">
+
+                        <span>OTHER</span>
+
+                        <h3>
+                            The Final Chapter
+                        </h3>
+
+                        <p>
+                            2026
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BOOK 07 -->
+
+                <article
+                    class="archive-page-card"
+                    data-category="other"
+                    data-title="Voices Of Time"
+                    data-author="Literary Honors"
+                >
+
+                    <div class="archive-page-cover">
+
+                        <div class="archive-cover-placeholder">
+
+                            <div class="archive-cover-placeholder-inner">
+
+                                <small>
+                                    LITERARY HONORS
+                                </small>
+
+                                <strong>
+                                    Voices<br>
+                                    Of Time
+                                </strong>
+
+                                <span>
+                                    HISTORY
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="archive-page-card-info">
+
+                        <span>HISTORY</span>
+
+                        <h3>
+                            Voices Of Time
+                        </h3>
+
+                        <p>
+                            2026
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BOOK 08 -->
+
+                <article
+                    class="archive-page-card"
+                    data-category="other"
+                    data-title="A Beautiful Beginning"
+                    data-author="Literary Honors"
+                >
+
+                    <div class="archive-page-cover">
+
+                        <div class="archive-cover-placeholder">
+
+                            <div class="archive-cover-placeholder-inner">
+
+                                <small>
+                                    LITERARY HONORS
+                                </small>
+
+                                <strong>
+                                    A Beautiful<br>
+                                    Beginning
+                                </strong>
+
+                                <span>
+                                    ROMANCE
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="archive-page-card-info">
+
+                        <span>ROMANCE</span>
+
+                        <h3>
+                            A Beautiful Beginning
+                        </h3>
+
+                        <p>
+                            2026
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BOOK 09 -->
+
+                <article
+                    class="archive-page-card"
+                    data-category="other"
+                    data-title="Finding Light"
+                    data-author="Literary Honors"
+                >
+
+                    <div class="archive-page-cover">
+
+                        <div class="archive-cover-placeholder">
+
+                            <div class="archive-cover-placeholder-inner">
+
+                                <small>
+                                    LITERARY HONORS
+                                </small>
+
+                                <strong>
+                                    Finding<br>
+                                    Light
+                                </strong>
+
+                                <span>
+                                    INSPIRATIONAL
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="archive-page-card-info">
+
+                        <span>INSPIRATIONAL</span>
+
+                        <h3>
+                            Finding Light
+                        </h3>
+
+                        <p>
+                            2026
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BOOK 10 -->
+
+                <article
+                    class="archive-page-card"
+                    data-category="other"
+                    data-title="The Human Mind"
+                    data-author="Literary Honors"
+                >
+
+                    <div class="archive-page-cover">
+
+                        <div class="archive-cover-placeholder">
+
+                            <div class="archive-cover-placeholder-inner">
+
+                                <small>
+                                    LITERARY HONORS
+                                </small>
+
+                                <strong>
+                                    The Human<br>
+                                    Mind
+                                </strong>
+
+                                <span>
+                                    PSYCHOLOGY
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="archive-page-card-info">
+
+                        <span>PSYCHOLOGY</span>
+
+                        <h3>
+                            The Human Mind
+                        </h3>
+
+                        <p>
+                            2026
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BOOK 11 -->
+
+                <article
+                    class="archive-page-card"
+                    data-category="other"
+                    data-title="A Remarkable Life"
+                    data-author="Literary Honors"
+                >
+
+                    <div class="archive-page-cover">
+
+                        <div class="archive-cover-placeholder">
+
+                            <div class="archive-cover-placeholder-inner">
+
+                                <small>
+                                    LITERARY HONORS
+                                </small>
+
+                                <strong>
+                                    A Remarkable<br>
+                                    Life
+                                </strong>
+
+                                <span>
+                                    BIOGRAPHY
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="archive-page-card-info">
+
+                        <span>BIOGRAPHY</span>
+
+                        <h3>
+                            A Remarkable Life
+                        </h3>
+
+                        <p>
+                            2026
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BOOK 12 -->
+
+                <article
+                    class="archive-page-card"
+                    data-category="other"
+                    data-title="Becoming More"
+                    data-author="Literary Honors"
+                >
+
+                    <div class="archive-page-cover">
+
+                        <div class="archive-cover-placeholder">
+
+                            <div class="archive-cover-placeholder-inner">
+
+                                <small>
+                                    LITERARY HONORS
+                                </small>
+
+                                <strong>
+                                    Becoming<br>
+                                    More
+                                </strong>
+
+                                <span>
+                                    SELF HELP
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="archive-page-card-info">
+
+                        <span>SELF HELP</span>
+
+                        <h3>
+                            Becoming More
+                        </h3>
+
+                        <p>
+                            2026
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+
+            <!-- Empty search message -->
+
+            <div
+                class="archive-empty-state"
+                id="archiveEmptyState"
+            >
+                No books found. Try another search.
+            </div>
+
+
+            <!-- =================================================
+                 COLLECTION FOOTER
+                 ================================================= -->
+
+            <div class="archive-collection-footer">
+
+                <div class="archive-progress">
+
+                    <span id="archiveProgressBar"></span>
+
+                </div>
+
+                <div
+                    class="archive-progress-count"
+                    id="archiveVisibleCount"
+                >
+                    12 OF 12
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             FINAL CTA
+             ===================================================== -->
+
+        <section class="archive-submit-cta">
+
+            <div class="archive-submit-cta-inner">
+
+                <span class="section-label">
+                    YOUR STORY BELONGS HERE
+                </span>
+
+                <h2>
+                    Ready to become part of the
+                    <span>Literary Archive?</span>
+                </h2>
+
+                <p>
+                    Submit your book for consideration and join a
+                    collection celebrating remarkable literary voices.
+                </p>
+
+                <a
+                    href="submit.html"
+                    class="archive-submit-button"
+                >
+                    SUBMIT YOUR BOOK
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+
+                <h3>
+                    Literary Honors
+                </h3>
+
+                <p>
+                    Celebrating exceptional books,
+                    authors, and literary voices.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="index.html">
+                    HOME
+                </a>
+
+                <a href="about.html">
+                    ABOUT
+                </a>
+
+                <a href="awards.html">
+                    AWARDS
+                </a>
+
+                <a href="categories.html">
+                    CATEGORIES
+                </a>
+
+                <a href="winners.html">
+                    WINNERS
+                </a>
+
+                <a href="literary-archive.html">
+                    LITERARY ARCHIVE
+                </a>
+
+                <a href="submit.html">
+                    SUBMIT YOUR BOOK
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Literary Honors. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         MAIN JAVASCRIPT
+         ===================================================== -->
+
+    <script src="assets/js/script.js"></script>
+
+</body>
+
+</html>
+
+<!-- =========================================================
+     LITERARY ARCHIVE PAGE
+     END - COMPLETE HTML
+     ========================================================= -->
