@@ -9,75 +9,70 @@ const escapeHTML = (value) => String(value)
 
 const initializeCategorySearch = () => {
     const searchInput = document.querySelector("#category-search");
-    const filtersContainer = document.querySelector("#home-category-filters");
     const index = document.querySelector("#category-grid");
     const emptyMessage = document.querySelector("#no-category-results");
 
-    if (!searchInput || !filtersContainer || !index || !emptyMessage) {
+    if (!searchInput || !index || !emptyMessage) {
         return;
     }
 
     const content = window.literaryHonorsCategories ?? {};
-    const filters = content.filters ?? [];
     const categories = (content.categories ?? []).filter((item) => item.active !== false);
-    const state = { type: "all", query: "" };
+    const state = { query: "" };
 
-    const renderFilters = () => {
-        filtersContainer.innerHTML = filters
-            .map(
-                (filter) => `
-                    <button
-                        class="home-category-filter${filter.value === state.type ? " is-active" : ""}"
-                        type="button"
-                        data-filter="${escapeHTML(filter.value)}"
-                        aria-pressed="${filter.value === state.type}"
-                    >${escapeHTML(filter.label)}</button>
-                `
-            )
-            .join("");
-    };
+    const renderCategoryLink = (category) => `
+        <a class="home-category-row" href="categories.html" data-slug="${escapeHTML(category.slug)}">
+            <span class="home-category-name">${escapeHTML(category.name)}</span>
+            <span class="home-category-arrow" aria-hidden="true">&gt;</span>
+        </a>
+    `;
+
+    const renderCategoryPanel = (type, title, description, icon, categoriesForType) => `
+        <article class="home-category-panel home-category-panel-${escapeHTML(type)}">
+            <div class="home-category-panel-media" aria-hidden="true"></div>
+            <div class="home-category-panel-content">
+                <div class="home-category-panel-heading">
+                    <span class="home-category-panel-icon" aria-hidden="true">${icon}</span>
+                    <div>
+                        <h3>${escapeHTML(title)}</h3>
+                        <p>${escapeHTML(description)}</p>
+                    </div>
+                </div>
+                <span class="home-category-panel-rule" aria-hidden="true"></span>
+                <div class="home-category-list">
+                    ${categoriesForType.map(renderCategoryLink).join("")}
+                </div>
+                <a class="home-category-panel-cta" href="categories.html">Explore ${escapeHTML(title)} <span aria-hidden="true">-&gt;</span></a>
+            </div>
+        </article>
+    `;
 
     const renderIndex = () => {
         const query = state.query.trim().toLowerCase();
         const visible = categories.filter((category) => {
-            const matchesType = state.type === "all" || category.type === state.type;
             const haystack = `${category.name} ${category.type} ${category.description}`.toLowerCase();
-            return matchesType && haystack.includes(query);
+            return haystack.includes(query);
         });
+        const fiction = visible.filter((category) => category.type === "fiction").slice(0, 16);
+        const nonFiction = visible.filter((category) => category.type === "non-fiction").slice(0, 16);
 
         index.hidden = visible.length === 0;
         emptyMessage.hidden = visible.length !== 0;
 
-        index.innerHTML = visible
-            .map(
-                (category) => `
-                    <a class="home-category-row" href="categories.html" data-slug="${escapeHTML(category.slug)}">
-                        <span class="home-category-name">${escapeHTML(category.name)}</span>
-                        <span class="home-category-type">${escapeHTML(category.type)}</span>
-                        <span class="home-category-arrow" aria-hidden="true">›</span>
-                    </a>
-                `
-            )
-            .join("");
+        index.innerHTML = [
+            fiction.length
+                ? renderCategoryPanel("fiction", "Fiction", "Stories that inspire, entertain, and transport you to new worlds.", "&#10002;", fiction)
+                : "",
+            nonFiction.length
+                ? renderCategoryPanel("non-fiction", "Non-Fiction", "Real people. True stories. A deeper understanding of our world.", "&#128214;", nonFiction)
+                : ""
+        ].join("");
     };
-
-    filtersContainer.addEventListener("click", (event) => {
-        const button = event.target.closest("[data-filter]");
-        if (!button) {
-            return;
-        }
-
-        state.type = button.dataset.filter;
-        renderFilters();
-        renderIndex();
-    });
-
     searchInput.addEventListener("input", () => {
         state.query = searchInput.value;
         renderIndex();
     });
 
-    renderFilters();
     renderIndex();
 };
 
