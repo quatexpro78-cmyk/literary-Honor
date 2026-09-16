@@ -33,7 +33,7 @@
     overflow: hidden;
     border-bottom: 0;
     background:
-        linear-gradient(90deg, rgba(3, 3, 3, 0.82) 0%, rgba(3, 3, 3, 0.55) 38%, rgba(3, 3, 3, 0.08) 72%),
+        linear-gradient(90deg, rgba(3, 3, 3, 0.94) 0%, rgba(3, 3, 3, 0.86) 38%, rgba(3, 3, 3, 0.18) 72%),
         url("../images/about-hero.png"),
         #030303;
     background-position: center;
@@ -413,6 +413,13 @@
 
 .founder-copy.is-visible blockquote > span {
     transform: scale(1);
+}
+
+.founder-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 40px;
 }
 
 /* Values and people */

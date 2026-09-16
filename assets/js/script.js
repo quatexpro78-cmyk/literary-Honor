@@ -634,3 +634,207 @@ document.addEventListener("DOMContentLoaded", function () {
    - Responsive behaviour bhi isi code se handle ho raha hai.
 
 ========================================================================== */
+
+/* ==========================================================================
+   AWARD SHOWCASE CAROUSEL (homepage winners section)
+   - 3 award images loop horizontally, forever, without a visible jump.
+   - Centre card is larger with a soft gold glow.
+   - Autoplay pauses on hover/focus and while the user is dragging.
+   ========================================================================== */
+
+(function initAwardShowcase() {
+    const root = document.querySelector("#award-showcase");
+    const track = document.querySelector("#award-showcase-track");
+
+    if (!root || !track) {
+        return;
+    }
+
+    const AWARDS = [
+        { src: "assets/images/h-a-1.png", alt: "Literary Honors awards stage" },
+        { src: "assets/images/h-a-2.png", alt: "Literary Honors winners with their awards" },
+        { src: "assets/images/h-a-3.png", alt: "Literary Honors award recipients celebrating" },
+        { src: "assets/images/gallery-winners.jpeg", alt: "Literary Honors award ceremony" }
+    ];
+
+    const count = AWARDS.length;
+    const AUTOPLAY_DELAY = 3600;
+
+    // Three copies so the track can always scroll in either direction and be
+    // silently re-centred on the middle copy once a boundary is crossed.
+    const slides = [];
+
+    for (let copy = 0; copy < 3; copy += 1) {
+        AWARDS.forEach((award, position) => {
+            const slide = document.createElement("div");
+            slide.className = "award-showcase-slide";
+
+            const card = document.createElement("figure");
+            card.className = "award-card";
+
+            const image = document.createElement("img");
+            image.src = award.src;
+            image.alt = copy === 1 ? award.alt : "";
+            image.loading = position === 0 && copy <= 1 ? "eager" : "lazy";
+            image.decoding = "async";
+
+            if (copy !== 1) {
+                slide.setAttribute("aria-hidden", "true");
+            }
+
+            const reflection = document.createElement("span");
+            reflection.className = "award-card-reflection";
+            reflection.setAttribute("aria-hidden", "true");
+
+            card.appendChild(image);
+            card.appendChild(reflection);
+            slide.appendChild(card);
+            track.appendChild(slide);
+            slides.push(slide);
+        });
+    }
+
+    let index = count; // first slide of the middle copy
+    let timer = null;
+    let paused = false;
+
+    function slideWidth() {
+        return slides[0].getBoundingClientRect().width || 1;
+    }
+
+    function render(animate) {
+        const width = slideWidth();
+        const viewport = track.parentElement.getBoundingClientRect().width;
+        const offset = index * width - (viewport - width) / 2;
+
+        track.style.transition = animate
+            ? "transform 1100ms cubic-bezier(0.22, 0.61, 0.36, 1)"
+            : "none";
+        track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+
+        slides.forEach((slide, position) => {
+            slide.classList.toggle("is-active", position === index);
+        });
+    }
+
+    function normalise() {
+        if (index >= count * 2) {
+            index -= count;
+            render(false);
+        } else if (index < count) {
+            index += count;
+            render(false);
+        }
+    }
+
+    function go(step) {
+        index += step;
+        render(true);
+    }
+
+    track.addEventListener("transitionend", (event) => {
+        if (event.propertyName === "transform") {
+            normalise();
+        }
+    });
+
+    function stopAutoplay() {
+        if (timer !== null) {
+            window.clearInterval(timer);
+            timer = null;
+        }
+    }
+
+    function startAutoplay() {
+        stopAutoplay();
+
+        if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            return;
+        }
+
+        timer = window.setInterval(() => go(1), AUTOPLAY_DELAY);
+    }
+
+    function pause() {
+        paused = true;
+        stopAutoplay();
+    }
+
+    function resume() {
+        paused = false;
+        startAutoplay();
+    }
+
+    root.addEventListener("mouseenter", pause);
+    root.addEventListener("mouseleave", resume);
+    root.addEventListener("focusin", pause);
+    root.addEventListener("focusout", resume);
+
+    root.querySelector(".award-showcase-prev").addEventListener("click", () => {
+        go(-1);
+        startAutoplay();
+    });
+
+    root.querySelector(".award-showcase-next").addEventListener("click", () => {
+        go(1);
+        startAutoplay();
+    });
+
+    slides.forEach((slide, position) => {
+        slide.addEventListener("click", () => {
+            if (position !== index) {
+                index = position;
+                render(true);
+                startAutoplay();
+            }
+        });
+    });
+
+    // Touch / pointer swipe.
+    let dragStartX = null;
+
+    root.addEventListener("pointerdown", (event) => {
+        dragStartX = event.clientX;
+        pause();
+    });
+
+    root.addEventListener("pointerup", (event) => {
+        if (dragStartX === null) {
+            return;
+        }
+
+        const distance = event.clientX - dragStartX;
+        dragStartX = null;
+
+        if (Math.abs(distance) > 40) {
+            go(distance < 0 ? 1 : -1);
+        }
+
+        resume();
+    });
+
+    root.addEventListener("pointercancel", () => {
+        dragStartX = null;
+        resume();
+    });
+
+    function syncSlideWidth() {
+        const wide = window.matchMedia("(min-width: 900px)").matches;
+        const medium = window.matchMedia("(min-width: 640px)").matches;
+        root.style.setProperty("--award-slide-width", wide ? "46%" : medium ? "64%" : "84%");
+        render(false);
+    }
+
+    window.addEventListener("resize", syncSlideWidth);
+
+    syncSlideWidth();
+    startAutoplay();
+
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            stopAutoplay();
+        } else {
+            startAutoplay();
+        }
+    });
+})();
