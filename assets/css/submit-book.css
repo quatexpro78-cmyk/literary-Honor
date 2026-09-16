@@ -188,28 +188,39 @@
         border-color 0.25s ease;
 }
 
-.gold-btn {
-    background: #d7a818;
-    color: #080808;
+/* Same gold treatment as .button-primary / .button-secondary sitewide */
 
-    border: 1px solid #d7a818;
+.gold-btn {
+    background: linear-gradient(
+        110deg,
+        var(--gold-dark),
+        var(--gold-light) 30%,
+        #d09c17 53%,
+        #f6dc68 73%,
+        #bd850b
+    );
+    border: 1px solid transparent;
+}
+
+.submit-page .gold-btn,
+.submit-page button.gold-btn {
+    color: #030303;
 }
 
 .gold-btn:hover {
-    background: #edc348;
-    border-color: #edc348;
+    filter: brightness(1.08);
     transform: translateY(-2px);
 }
 
 .outline-gold-btn {
-    color: #d7a818;
-    border: 1px solid #d7a818;
+    color: var(--gold);
+    border: 1px solid var(--gold);
     background: transparent;
 }
 
 .outline-gold-btn:hover {
-    color: #080808;
-    background: #d7a818;
+    border-color: var(--gold-light);
+    color: var(--gold-light);
     transform: translateY(-2px);
 }
 
@@ -1051,11 +1062,11 @@
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr);
 
     gap: 60px;
 
-    padding-bottom: 55px;
+    padding-bottom: 46px;
 }
 
 .footer-brand h3 {
