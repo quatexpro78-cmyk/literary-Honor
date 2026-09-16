@@ -2196,9 +2196,6 @@ a:focus-visible {
     content: "";
 }
 
-.judging-gallery[hidden] {
-    display: none;
-}
 
 .judging-standard .judging-pillars-intro {
     display: none !important;
@@ -2209,128 +2206,33 @@ a:focus-visible {
    05. IMAGE GALLERY
    ========================================================= */
 
-.judging-gallery {
-    display: grid;
-
-    grid-template-columns:
-        1.2fr
-        0.72fr
-        0.72fr;
-
-    gap: 10px;
-
-    height: 270px;
-
-    margin-top: 20px;
-}
 
 
 /* large image */
 
-.judging-gallery-large {
-    position: relative;
-
-    overflow: hidden;
-
-    background: #111;
-}
 
 
 /* two small image columns */
 
-.judging-gallery-small {
-    position: relative;
-
-    display: grid;
-
-    grid-template-rows:
-        1fr
-        1fr;
-
-    gap: 10px;
-
-    overflow: hidden;
-}
 
 
 /* all gallery images */
 
-.judging-gallery-image {
-    position: relative;
-}
 
-.judging-gallery-large::before,
-.judging-gallery-image::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    border: 1px solid var(--gold);
-    opacity: 0;
-    transition: opacity 650ms ease;
-    pointer-events: none;
-}
 
-.judging-gallery-large:hover::before,
-.judging-gallery-image:hover::before {
-    opacity: 1;
-}
 
-.judging-gallery img {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    filter:
-        saturate(0.78)
-        contrast(1.05)
-        brightness(0.82);
-
-    transition:
-        transform 0.5s ease,
-        filter 0.5s ease;
-}
 
 
 /* =========================================================
    06. IMAGE HOVER EFFECT
    ========================================================= */
 
-.judging-gallery-large:hover img,
-.judging-gallery-small img:hover {
-    transform: scale(1.04);
-
-    filter:
-        saturate(0.95)
-        contrast(1.05)
-        brightness(0.95);
-}
 
 
 /* =========================================================
    07. CINEMATIC IMAGE OVERLAY
    ========================================================= */
 
-.judging-gallery-large::after,
-.judging-gallery-small::after {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            180deg,
-            transparent 45%,
-            rgba(0, 0, 0, 0.38)
-        );
-
-    pointer-events: none;
-}
 
 
 /* =========================================================
@@ -2537,11 +2439,6 @@ a:focus-visible {
    ========================================================= */
 
 @media (max-width: 430px) {
-
-    .judging-gallery {
-        height: 280px;
-    }
-
 
     .judging-intro h2 {
         font-size: 39px;

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en" data-base="../">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories | Literary Honors</title>
+    <meta name="description" content="Explore Literary Honors award categories for fiction and non-fiction books.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css?v=cat-index-1">
+    <link rel="stylesheet" href="../assets/css/categories.css">
+</head>
+<body class="categories-page">
+    <header class="site-header">
+        <div class="site-container header-inner">
+            <nav class="main-navigation" aria-label="Main navigation">
+                <a class="navigation-link" href="../index.html#home">Home</a>
+                <a class="navigation-link" href="about.html">About</a>
+                <a class="navigation-link" href="awards.html">Awards</a>
+                <a class="navigation-link active" href="categories.html" aria-current="page">Categories</a>
+                <a class="navigation-link" href="judging.html">Judging</a>
+                <a class="navigation-link" href="literary-archive.html">Literary Archive</a>
+                <a class="navigation-link" href="winners.html">Winners</a>
+                <a class="header-cta" href="#category-submit">Submit Your Book</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="category-hero" aria-labelledby="category-page-title">
+            <img class="category-hero-image" src="../assets/images/categories-hero.png" alt="Stacked books and an open manuscript in a warmly lit dark library" width="2017" height="780" fetchpriority="high">
+            <div class="content-container category-hero-inner">
+                <div class="category-hero-copy">
+                    <p class="category-hero-eyebrow">Genre Classifications</p>
+                    <h1 id="category-page-title">Find the Right Place<br>for <span class="gold-text">Your Book</span></h1>
+                    <p class="category-hero-description">Every book deserves to be evaluated in the context that best reflects its genre, purpose and audience. Explore the Literary Honors award categories and find where your work belongs.</p>
+                    <div class="category-hero-actions">
+                        <a class="button button-primary" href="#category-index">Explore Categories</a>
+                        <a class="button button-secondary" href="#category-submit">Submit Your Book</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section category-summary-section" aria-label="Category summary">
+            <div class="stats-grid" id="category-summary"></div>
+        </section>
+
+        <section class="category-index-section" id="category-index">
+            <div class="content-container">
+                <header class="category-index-heading" data-reveal="up">
+                    <p class="section-eyebrow">The Index</p>
+                    <h2>Explore Our Award Categories</h2>
+                    <p>Browse by type or search for the category that best represents your book.</p>
+                </header>
+
+                <div class="category-tools" data-reveal="up">
+                    <div class="category-filters" id="category-filters" aria-label="Filter award categories"></div>
+                    <label class="main-category-search" for="main-category-search">
+                        <span class="sr-only">Search award categories</span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"></circle><path d="m16 16 4 4"></path></svg>
+                        <input id="main-category-search" type="search" placeholder="Search fiction, memoir, business, fantasy..." autocomplete="off">
+                    </label>
+                </div>
+
+                <p class="category-results-status" id="category-results-status" aria-live="polite"></p>
+                <div class="main-category-grid" id="main-category-grid"></div>
+
+                <div class="category-empty-state" id="category-empty-state" hidden>
+                    <span aria-hidden="true">⌕</span>
+                    <h3>No categories found.</h3>
+                    <p>Try another title, genre or subject.</p>
+                    <button class="button button-secondary" id="clear-category-search" type="button">Clear Search</button>
+                </div>
+                <p class="sr-only" id="category-detail-status" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <section class="category-guidance-section section-divider" id="how-to-choose">
+            <div class="content-container">
+                <header class="category-editorial-heading" data-reveal="up">
+                    <p class="section-eyebrow">Choosing Well</p>
+                    <h2>How to Choose<br>the Right Category</h2>
+                </header>
+                <div class="choice-principles" id="choice-principles"></div>
+            </div>
+        </section>
+
+        <section class="cross-boundaries-section" id="multiple-categories">
+            <div class="content-container cross-boundaries-layout">
+                <figure class="cross-boundaries-image" data-reveal="left">
+                    <img src="../assets/images/awards-submit-cta.png" alt="Manuscript, pen and books arranged on a dark writing desk" width="1967" height="799" loading="lazy">
+                </figure>
+                <div class="cross-boundaries-copy" data-reveal="right">
+                    <p class="section-eyebrow">More Than One Fit?</p>
+                    <h2>Some Books Cross Boundaries.</h2>
+                    <p>A book may genuinely belong in more than one category. A personal story about building a company may potentially belong in:</p>
+                    <ul aria-label="Example matching categories">
+                        <li>Memoir</li>
+                        <li>Business</li>
+                        <li>Entrepreneurship</li>
+                    </ul>
+                    <p>The correct choice depends on what the book is primarily doing for its reader.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="entry-options-section section-divider" id="entry-options-section">
+            <div class="content-container">
+                <header class="entry-options-heading" data-reveal="up">
+                    <p class="section-eyebrow">Entry Options</p>
+                    <h2>Choose the Categories<br>That Fit Your Book</h2>
+                    <p>Enter one category or select additional meaningful fits for your work.</p>
+                </header>
+                <div class="entry-options-scroller" tabindex="0" role="region" aria-label="Category entry pricing options. Scroll horizontally on smaller screens.">
+                    <div class="entry-options" id="entry-options"></div>
+                </div>
+                <p class="entry-options-note">Pricing is currently displayed from temporary frontend configuration and can be updated after final approval.</p>
+                <a class="button button-primary category-section-cta" href="#category-submit" data-reveal="up">Submit Your Book</a>
+            </div>
+        </section>
+
+        <section class="category-help-section" id="category-guidance">
+            <div class="content-container category-help-layout">
+                <div class="category-help-copy" data-reveal="left">
+                    <p class="section-eyebrow">Need Guidance?</p>
+                    <h2>Not Sure Where<br>Your Book Fits?</h2>
+                    <p>Some books are easy to classify. Others cross genres, audiences or subjects. If you are uncertain, category guidance can help you choose confidently before submitting.</p>
+                    <a class="button button-secondary category-help-button" href="#category-guidance" aria-label="Get category guidance; destination will be connected later">Get Category Guidance</a>
+                </div>
+                <figure class="category-help-image" data-reveal="right">
+                    <img src="../assets/images/about-open-book.png" alt="Open book illuminated by warm golden light" width="1536" height="1024" loading="lazy">
+                </figure>
+            </div>
+        </section>
+
+        <section class="category-submit-section" id="category-submit">
+            <img src="../assets/images/everybookbackground.png" alt="" width="1670" height="941" loading="lazy" aria-hidden="true">
+            <div class="content-container category-submit-inner">
+                <div class="category-submit-copy" data-reveal="up">
+                    <p class="section-eyebrow">Found Your Category?</p>
+                    <h2>Your Book Has a Place.<br><span class="gold-text">Now Let It Be Seen.</span></h2>
+                    <p>Choose the category that represents your work, then take the next step toward thoughtful evaluation and literary recognition.</p>
+                    <div class="category-submit-actions">
+                        <a class="button button-primary" href="#category-submit">Submit Your Book</a>
+                        <a class="button button-secondary" href="#category-index">Review Categories</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Category detail dialog, opened by clicking any category card -->
+    <div class="category-modal" id="category-modal" hidden>
+        <div class="category-modal-backdrop" data-category-modal-close></div>
+        <div class="category-modal-panel" role="dialog" aria-modal="true" aria-labelledby="category-modal-title">
+            <button class="category-modal-close" type="button" data-category-modal-close aria-label="Close category details">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span class="category-modal-type" id="category-modal-type"></span>
+            <h3 id="category-modal-title"></h3>
+            <span class="category-modal-rule" aria-hidden="true"></span>
+            <p class="category-modal-description" id="category-modal-description"></p>
+            <ul class="category-modal-points" id="category-modal-points"></ul>
+            <div class="category-modal-actions">
+                <a class="button button-primary" href="submit.html">Submit Your Book</a>
+                <a class="button button-secondary" href="judging.html">Judging Criteria</a>
+            </div>
+            <div class="category-modal-nav">
+                <button type="button" data-category-step="-1">&#8249; Previous</button>
+                <span id="category-modal-position"></span>
+                <button type="button" data-category-step="1">Next &#8250;</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="content-container footer-inner">
+            <p>Literary Honors Awards</p>
+            <span>© 2026 Literary Honors. All Rights Reserved.</span>
+        </div>
+    </footer>
+
+    <script src="../assets/js/site-paths.js"></script>
+    <script src="../assets/js/categories-data.js" defer></script>
+    <script src="../assets/js/categories.js" defer></script>
+    <script src="../assets/js/script.js" defer></script>
+    <script src="../assets/js/nav.js" defer></script>
+</body>
+</html>

@@ -63,7 +63,7 @@ const renderCategoryPreview = () => {
     container.innerHTML = (awardsContent.categoryPreview ?? [])
         .map(
             (category, index) => `
-                <a class="awards-category-card" href="categories.html" data-reveal="up" style="transition-delay: ${index * 65}ms">
+                <a class="awards-category-card" href="${sitePath("pages/categories.html")}" data-reveal="up" style="transition-delay: ${index * 65}ms">
                     <span class="awards-category-icon">${awardsIcon(category.icon)}</span>
                     <span>${category.name}</span>
                     <b aria-hidden="true">→</b>
@@ -101,7 +101,7 @@ const renderWinnerCards = () => {
                 <article class="winner-card" data-reveal="up" style="transition-delay: ${index * 70}ms">
                     <div class="winner-cover" data-cover="${winner.cover}" role="img" aria-label="Book cover for ${winner.title}">
                         ${winner.image
-                            ? `<img src="${winner.image}" alt="Cover for ${winner.title}" loading="lazy">`
+                            ? `<img src="${sitePath(winner.image)}" alt="Cover for ${winner.title}" loading="lazy">`
                             : `<span class="winner-cover-mark" aria-hidden="true">LH</span><strong>${winner.title}</strong><span>Literary Honors</span>`}
                     </div>
                     <h3>${winner.title}</h3>

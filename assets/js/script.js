@@ -21,7 +21,7 @@ const initializeCategorySearch = () => {
     const state = { query: "" };
 
     const renderCategoryLink = (category) => `
-        <a class="home-category-row" href="categories.html" data-slug="${escapeHTML(category.slug)}">
+        <a class="home-category-row" href="${sitePath("pages/categories.html")}" data-slug="${escapeHTML(category.slug)}">
             <span class="home-category-name">${escapeHTML(category.name)}</span>
             <span class="home-category-arrow" aria-hidden="true">&gt;</span>
         </a>
@@ -42,7 +42,7 @@ const initializeCategorySearch = () => {
                 <div class="home-category-list">
                     ${categoriesForType.map(renderCategoryLink).join("")}
                 </div>
-                <a class="home-category-panel-cta" href="categories.html">Explore ${escapeHTML(title)} <span aria-hidden="true">-&gt;</span></a>
+                <a class="home-category-panel-cta" href="${sitePath("pages/categories.html")}">Explore ${escapeHTML(title)} <span aria-hidden="true">-&gt;</span></a>
             </div>
         </article>
     `;
@@ -673,7 +673,7 @@ document.addEventListener("DOMContentLoaded", function () {
             card.className = "award-card";
 
             const image = document.createElement("img");
-            image.src = award.src;
+            image.src = sitePath(award.src);
             image.alt = copy === 1 ? award.alt : "";
             image.loading = position === 0 && copy <= 1 ? "eager" : "lazy";
             image.decoding = "async";

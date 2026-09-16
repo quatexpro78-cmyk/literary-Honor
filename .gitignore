@@ -1,2 +1,12 @@
+# local scratch and QA output
+tmp/
 .qa-*
+
+# editor and tooling
+.vscode/
+.kilo/
+
+# archives and OS files
 *.rar
+Thumbs.db
+.DS_Store

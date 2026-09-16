@@ -71,7 +71,7 @@
             .map(
                 (winner, index) => `
                     <article class="featured-winner${index === 0 ? " is-large" : ""}" data-reveal="${index === 0 ? "scale" : "up"}" style="transition-delay: ${index * 90}ms">
-                        <img src="${escapeHTML(winner.featuredImage)}" alt="Featured recognition imagery for ${escapeHTML(winner.bookTitle)} by ${escapeHTML(winner.authorName)}" loading="lazy">
+                        <img src="${escapeHTML(sitePath(winner.featuredImage))}" alt="Featured recognition imagery for ${escapeHTML(winner.bookTitle)} by ${escapeHTML(winner.authorName)}" loading="lazy">
                         <div class="featured-winner-content">
                             <span class="featured-winner-label">${escapeHTML(winner.category)} · ${escapeHTML(winner.awardYear)} Winner</span>
                             <h3>${escapeHTML(winner.bookTitle)}</h3>
@@ -94,7 +94,7 @@
             .map(
                 (item, index) => `
                     <figure class="recognition-image" data-reveal="up" style="transition-delay: ${index * 90}ms">
-                        <img src="${escapeHTML(item.src)}" alt="${escapeHTML(item.alt)}" loading="lazy">
+                        <img src="${escapeHTML(sitePath(item.src))}" alt="${escapeHTML(item.alt)}" loading="lazy">
                     </figure>
                 `
             )
@@ -157,7 +157,7 @@
         <article class="winner-card" data-reveal="up" style="transition-delay: ${(index % 4) * 65}ms">
             <div class="winner-book-cover" data-theme="${escapeHTML(winner.coverTheme)}" role="img" aria-label="Book cover for ${escapeHTML(winner.bookTitle)}">
                 ${winner.coverImage
-                    ? `<img src="${escapeHTML(winner.coverImage)}" alt="Cover for ${escapeHTML(winner.bookTitle)}" loading="lazy">`
+                    ? `<img src="${escapeHTML(sitePath(winner.coverImage))}" alt="Cover for ${escapeHTML(winner.bookTitle)}" loading="lazy">`
                     : `<div class="book-cover-content"><strong>${escapeHTML(winner.bookTitle)}</strong><small>${escapeHTML(winner.authorName)}</small></div>`}
             </div>
             <div class="winner-card-copy">
