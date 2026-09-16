@@ -289,16 +289,104 @@ a:focus-visible {
     outline-offset: 3px;
 }
 
+.nav-toggle {
+    display: none;
+}
+
 @media (max-width: 800px) {
     .site-container {
         padding-inline: 20px;
     }
 
+    .header-inner {
+        justify-content: flex-end;
+        gap: 12px;
+    }
+
+    .nav-toggle {
+        position: relative;
+        z-index: 2;
+        display: inline-flex;
+        order: 3;
+        width: 42px;
+        height: 38px;
+        padding: 0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        border: 1px solid rgba(215, 165, 29, 0.42);
+        border-radius: 8px;
+        background: rgba(5, 5, 5, 0.6);
+        cursor: pointer;
+    }
+
+    .nav-toggle span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        background: var(--gold);
+        transition: transform 240ms ease, opacity 200ms ease;
+    }
+
+    .site-header.nav-open .nav-toggle span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .site-header.nav-open .nav-toggle span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .site-header.nav-open .nav-toggle span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .main-navigation {
+        position: fixed;
+        top: clamp(63px, 6.667vw, 96px);
+        right: 0;
+        left: 0;
+        max-height: calc(100vh - clamp(63px, 6.667vw, 96px));
+        overflow-y: auto;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 6px 20px 20px;
+        border-bottom: 1px solid rgba(215, 165, 29, 0.28);
+        background: rgba(5, 5, 5, 0.98);
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: opacity 220ms ease, transform 220ms ease;
+    }
+
+    .site-header.nav-open .main-navigation {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    /* the desktop entrance animation parks items off-canvas; not in the panel */
+    .main-navigation > * {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+
     .navigation-link {
+        display: block;
+        padding: 15px 2px;
+        border-bottom: 1px solid rgba(215, 165, 29, 0.12);
+        font-size: 13px;
+        letter-spacing: 0.06em;
+    }
+
+    .navigation-link.active::after {
         display: none;
     }
 
     .header-cta {
+        order: 2;
         margin-left: 0;
     }
 
@@ -307,8 +395,16 @@ a:focus-visible {
         min-height: 650px;
     }
 
+    /* the hero art is busy at phone widths; darken it under the copy */
     .hero-vignette {
-        background: rgba(0, 0, 0, 0.18);
+        background:
+            linear-gradient(
+                180deg,
+                rgba(0, 0, 0, 0.55) 0%,
+                rgba(0, 0, 0, 0.3) 26%,
+                rgba(0, 0, 0, 0.62) 52%,
+                rgba(0, 0, 0, 0.82) 100%
+            );
     }
 
     .hero-title {
@@ -1628,8 +1724,12 @@ a:focus-visible {
         grid-template-columns: 1fr 1fr;
     }
 
+    .stat-item {
+        padding: 14px 10px;
+    }
+
     .stat-item strong {
-        font-size: 26px;
+        font-size: clamp(19px, 5.4vw, 26px);
     }
 
     .stat-item span {
@@ -2485,6 +2585,12 @@ a:focus-visible {
 .main-navigation > :nth-child(6) { animation-delay: 430ms; }
 .main-navigation > :nth-child(7) { animation-delay: 500ms; }
 .main-navigation > :nth-child(8) { animation-delay: 570ms; }
+
+.header-inner > .header-cta {
+    opacity: 0;
+    transform: translateX(110vw);
+    animation: home-nav-enter 1200ms cubic-bezier(0.22, 1, 0.36, 1) 570ms both;
+}
 
 @keyframes home-nav-enter {
     to {

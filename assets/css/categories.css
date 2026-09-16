@@ -842,17 +842,15 @@
 
     .category-filters {
         width: 100%;
-        overflow-x: auto;
-        overscroll-behavior-inline: contain;
-        scrollbar-width: none;
-    }
-
-    .category-filters::-webkit-scrollbar {
-        display: none;
+        flex-wrap: wrap;
     }
 
     .category-filter {
-        flex: 0 0 auto;
+        flex: 1 1 auto;
+        min-width: 0;
+        padding: 0 10px;
+        font-size: 11px;
+        letter-spacing: 0.06em;
     }
 
     .main-category-grid,

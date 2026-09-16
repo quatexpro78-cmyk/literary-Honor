@@ -18,6 +18,12 @@
     overflow-x: hidden;
 }
 
+/* overflow-x on <body> propagates to the viewport, so body itself stops
+   clipping; keep decorative glows from widening the page here instead. */
+.archive-page main {
+    overflow-x: clip;
+}
+
 .archive-page *,
 .archive-page *::before,
 .archive-page *::after {
