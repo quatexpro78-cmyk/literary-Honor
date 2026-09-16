@@ -658,7 +658,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     const count = AWARDS.length;
-    const AUTOPLAY_DELAY = 3600;
+    const AUTOPLAY_DELAY = 2200;
 
     // Three copies so the track can always scroll in either direction and be
     // silently re-centred on the middle copy once a boundary is crossed.
@@ -708,7 +708,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const offset = index * width - (viewport - width) / 2;
 
         track.style.transition = animate
-            ? "transform 1100ms cubic-bezier(0.22, 0.61, 0.36, 1)"
+            ? "transform 750ms cubic-bezier(0.22, 0.61, 0.36, 1)"
             : "none";
         track.style.transform = `translate3d(${-offset}px, 0, 0)`;
 

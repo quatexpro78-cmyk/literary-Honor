@@ -63,7 +63,7 @@ const renderCategoryPreview = () => {
     container.innerHTML = (awardsContent.categoryPreview ?? [])
         .map(
             (category, index) => `
-                <a class="awards-category-card" href="index.html#categories" data-reveal="up" style="transition-delay: ${index * 65}ms">
+                <a class="awards-category-card" href="categories.html" data-reveal="up" style="transition-delay: ${index * 65}ms">
                     <span class="awards-category-icon">${awardsIcon(category.icon)}</span>
                     <span>${category.name}</span>
                     <b aria-hidden="true">→</b>

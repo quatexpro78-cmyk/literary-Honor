@@ -48,8 +48,9 @@
 
 .archive-page-hero {
     position: relative;
-    min-height: 585px;
-    padding: 58px 20px 72px;
+    min-height: 470px;
+    /* clear the fixed site header so the hero card never sits under it */
+    padding: calc(clamp(63px, 6.667vw, 96px) + 44px) 20px 60px;
 
     display: flex;
     align-items: center;
@@ -354,38 +355,28 @@
     color: #f5efe4;
 
     font-family:
+        "Playfair Display",
         Georgia,
-        "Times New Roman",
         serif;
 
     font-size: clamp(42px, 5vw, 62px);
     font-weight: 500;
 
     line-height: 1.02;
+    white-space: nowrap;
 
     letter-spacing: -1.5px;
 }
 
 .archive-page-hero h1 span {
-    display: block;
+    display: inline;
 
-    margin-top: 4px;
+    margin-left: 0;
 
     color: #d2a84c;
 
     text-shadow:
         0 0 25px rgba(210, 168, 76, 0.10);
-}
-
-.archive-page-hero p {
-    max-width: 455px;
-
-    margin: 20px auto 0;
-
-    color: rgba(244, 239, 229, 0.64);
-
-    font-size: 14px;
-    line-height: 1.75;
 }
 
 /* =========================================================
@@ -406,7 +397,7 @@
     width: 100%;
     max-width: 440px;
 
-    margin: 28px auto 0;
+    margin: 34px auto 0;
 
     display: flex;
     align-items: stretch;
@@ -538,8 +529,8 @@
     color: #f4eee4;
 
     font-family:
+        "Playfair Display",
         Georgia,
-        "Times New Roman",
         serif;
 
     font-size: clamp(38px, 4.5vw, 58px);
@@ -638,8 +629,8 @@
     color: #f4eee3;
 
     font-family:
+        "Playfair Display",
         Georgia,
-        "Times New Roman",
         serif;
 
     font-size: 32px;
@@ -1010,8 +1001,8 @@
     color: #f2ecdf;
 
     font-family:
+        "Playfair Display",
         Georgia,
-        "Times New Roman",
         serif;
 
     font-size: 17px;
@@ -1068,8 +1059,8 @@
     color: #eee8dc;
 
     font-family:
+        "Playfair Display",
         Georgia,
-        "Times New Roman",
         serif;
 
     font-size: 15px;
@@ -1128,8 +1119,8 @@
     color: #d5aa4c;
 
     font-family:
+        "Playfair Display",
         Georgia,
-        "Times New Roman",
         serif;
 
     font-size: 25px;
@@ -1293,8 +1284,8 @@
     color: #f2ece0;
 
     font-family:
+        "Playfair Display",
         Georgia,
-        "Times New Roman",
         serif;
 
     font-size: clamp(38px, 5vw, 62px);
@@ -1394,12 +1385,11 @@
 
     display: grid;
 
-    grid-template-columns:
-        1.2fr 0.8fr;
+    grid-template-columns: minmax(0, 1fr);
 
     gap: 60px;
 
-    padding-bottom: 45px;
+    padding-bottom: 38px;
 }
 
 .archive-page .footer-brand h3 {
@@ -1408,8 +1398,8 @@
     color: #f3ede1;
 
     font-family:
+        "Playfair Display",
         Georgia,
-        "Times New Roman",
         serif;
 
     font-size: 25px;
@@ -1696,12 +1686,7 @@
     }
 
     .archive-page-hero h1 {
-        font-size: 42px;
-    }
-
-    .archive-page-hero p {
-        font-size: 12px;
-        line-height: 1.65;
+        font-size: clamp(28px, 8.5vw, 42px);
     }
 
     .archive-search {

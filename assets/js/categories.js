@@ -73,12 +73,6 @@ const renderCategoryGrid = () => {
                     <span class="main-category-type">${escapeCategoryHTML(category.type)}</span>
                     <h3>${escapeCategoryHTML(category.name)}</h3>
                     <p>${escapeCategoryHTML(category.description)}</p>
-                    <a
-                        href="#category-index"
-                        data-category-name="${escapeCategoryHTML(category.name)}"
-                        data-future-href="/categories/${escapeCategoryHTML(category.slug)}"
-                        aria-describedby="category-detail-status"
-                    >Explore Category <span aria-hidden="true">→</span></a>
                 </article>
             `
         )
