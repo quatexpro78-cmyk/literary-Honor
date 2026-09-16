@@ -1601,6 +1601,27 @@ a:focus-visible {
         grid-template-columns: 1fr;
     }
 
+    /* the desktop rule sets a 190px side padding that leaves no room here */
+    .about-layout,
+    .about-section .about-layout {
+        padding-inline: 24px;
+    }
+
+    .about-copy,
+    .about-copy h2,
+    .about-copy > .section-body {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .about-copy .section-primary-cta {
+        width: auto;
+        height: auto;
+        min-height: 44px;
+        padding: 12px 22px;
+        white-space: nowrap;
+    }
+
     .benefit-card,
     .card-content {
         min-height: 650px;
@@ -1803,7 +1824,10 @@ a:focus-visible {
     }
 
     .about-quote {
-        font-size: 22px;
+        width: min(100%, 300px);
+        justify-self: center;
+        padding: 40px 30px 36px;
+        font-size: 20px;
     }
 }
 
