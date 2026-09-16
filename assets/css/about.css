@@ -31,17 +31,18 @@
     position: relative;
     min-height: 860px;
     overflow: hidden;
-    border-bottom: 1px solid rgba(215, 165, 29, 0.27);
+    border-bottom: 0;
     background:
-        linear-gradient(90deg, rgba(3, 3, 3, 0.95) 0%, rgba(3, 3, 3, 0.82) 38%, rgba(3, 3, 3, 0.3) 72%),
+        linear-gradient(90deg, rgba(3, 3, 3, 0.82) 0%, rgba(3, 3, 3, 0.55) 38%, rgba(3, 3, 3, 0.08) 72%),
         url("../images/about-hero.png"),
         #030303;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: auto 92%;
+    background-size: cover;
 }
 
 .about-hero::after {
+    display: none;
     position: absolute;
     right: 50.4%;
     bottom: 0;
@@ -143,6 +144,7 @@
 .purpose-section {
     position: relative;
     overflow: hidden;
+    border-top: 0;
     background: #080706;
 }
 
@@ -329,10 +331,16 @@
 }
 
 .founder-media img {
-    object-fit: contain;
+    display: block;
+    object-fit: cover;
     object-position: center center;
     background: #050505;
     filter: saturate(0.78) contrast(1.04);
+    transform: scale(1.07);
+}
+
+.founder-media:hover img {
+    transform: scale(1.085);
 }
 
 .founder-media::after {
@@ -1425,11 +1433,16 @@
 
     .about-hero-media img,
     .story-media img,
-    .founder-media img,
     .future-section > img {
         animation: none;
         transition: none;
         transform: none;
+    }
+
+    .founder-media img {
+        animation: none;
+        transition: none;
+        transform: scale(1.07);
     }
 
     .purpose-copy::before,

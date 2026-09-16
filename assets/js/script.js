@@ -28,7 +28,7 @@ const initializeCategorySearch = () => {
     `;
 
     const renderCategoryPanel = (type, title, description, icon, categoriesForType) => `
-        <article class="home-category-panel home-category-panel-${escapeHTML(type)}">
+        <article class="home-category-panel home-category-panel-${escapeHTML(type)}" data-reveal="${type === "fiction" ? "left" : "right"}">
             <div class="home-category-panel-media" aria-hidden="true"></div>
             <div class="home-category-panel-content">
                 <div class="home-category-panel-heading">
@@ -64,7 +64,7 @@ const initializeCategorySearch = () => {
                 ? renderCategoryPanel("fiction", "Fiction", "Stories that inspire, entertain, and transport you to new worlds.", "&#10002;", fiction)
                 : "",
             nonFiction.length
-                ? renderCategoryPanel("non-fiction", "Non-Fiction", "Real people. True stories. A deeper understanding of our world.", "&#128214;", nonFiction)
+                ? renderCategoryPanel("non-fiction", "Non-Fiction", "Real people. True stories. A deeper understanding of our world.", '<svg viewBox="0 0 24 24"><use href="#icon-book"></use></svg>', nonFiction)
                 : ""
         ].join("");
     };
@@ -112,6 +112,26 @@ const initializeRevealAnimations = () => {
 
     document.documentElement.classList.add("animations-ready");
 
+    const screenEdgeRevealSelector = [
+        ".home-page .about-copy[data-reveal]",
+        ".home-page .about-quote[data-reveal]",
+        ".home-page .benefit-card[data-reveal]",
+        ".home-page .home-category-panel[data-reveal]",
+        ".home-page .judging-process-card[data-reveal]"
+    ].join(",");
+
+    const revealTargets = new Map();
+
+    elements.forEach((element) => {
+        const target = element.matches(screenEdgeRevealSelector)
+            ? element.closest("section") ?? element
+            : element;
+        const linkedElements = revealTargets.get(target) ?? [];
+
+        linkedElements.push(element);
+        revealTargets.set(target, linkedElements);
+    });
+
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
@@ -119,14 +139,16 @@ const initializeRevealAnimations = () => {
                     return;
                 }
 
-                entry.target.classList.add("is-visible");
+                const linkedElements = revealTargets.get(entry.target) ?? [entry.target];
+
+                linkedElements.forEach((element) => element.classList.add("is-visible"));
                 observer.unobserve(entry.target);
             });
         },
         { threshold: 0.18 }
     );
 
-    elements.forEach((element) => observer.observe(element));
+    revealTargets.forEach((_, target) => observer.observe(target));
 };
 
 initializeCategorySearch();
@@ -287,11 +309,15 @@ document.addEventListener("DOMContentLoaded", function () {
     ---------------------------------------------------------------------- */
 
     function getMaxIndex() {
-
-        return Math.max(
+        const step = getBookStep();
+        const maxTranslate = Math.max(
             0,
-            totalBooks - visibleBooks
+            archiveTrack.scrollWidth - archiveViewport.clientWidth
         );
+
+        return step > 0
+            ? Math.ceil(maxTranslate / step)
+            : 0;
     }
 
 
@@ -385,8 +411,15 @@ document.addEventListener("DOMContentLoaded", function () {
            Matlab ek card left move hoga.
         -------------------------------------------------------------- */
 
-        const translateX =
-            currentIndex * step;
+        const maxTranslate = Math.max(
+            0,
+            archiveTrack.scrollWidth - archiveViewport.clientWidth
+        );
+
+        const translateX = Math.min(
+            currentIndex * step,
+            maxTranslate
+        );
 
 
         archiveTrack.style.transform =

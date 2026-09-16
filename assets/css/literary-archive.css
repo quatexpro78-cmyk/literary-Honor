@@ -826,6 +826,14 @@
         transform 0.45s ease;
 }
 
+.archive-page-cover > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
 .archive-page-cover::before {
     content: "";
 
@@ -1054,7 +1062,7 @@
     text-transform: uppercase;
 }
 
-.archive-page-card-info h4 {
+.archive-page-card-info h3 {
     margin: 0;
 
     color: #eee8dc;
@@ -1820,7 +1828,7 @@
         font-size: 14px;
     }
 
-    .archive-page-card-info h4 {
+    .archive-page-card-info h3 {
         font-size: 13px;
     }
 

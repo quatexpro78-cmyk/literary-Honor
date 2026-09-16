@@ -161,13 +161,13 @@ a {
 .hero-vignette {
     z-index: 6;
     background:
-        linear-gradient(0deg, rgba(0, 0, 0, 0.32) 0%, transparent 29%),
+        linear-gradient(0deg, rgba(0, 0, 0, 0.12) 0%, transparent 29%),
         linear-gradient(
             90deg,
-            rgba(0, 0, 0, 0.95) 0%,
-            rgba(0, 0, 0, 0.82) 32%,
-            rgba(0, 0, 0, 0.4) 58%,
-            rgba(0, 0, 0, 0.08) 100%
+            rgba(0, 0, 0, 0.58) 0%,
+            rgba(0, 0, 0, 0.36) 32%,
+            rgba(0, 0, 0, 0.12) 58%,
+            transparent 100%
         );
 }
 
@@ -308,7 +308,7 @@ a:focus-visible {
     }
 
     .hero-vignette {
-        background: rgba(0, 0, 0, 0.42);
+        background: rgba(0, 0, 0, 0.18);
     }
 
     .hero-title {
@@ -557,12 +557,29 @@ a:focus-visible {
 }
 
 .benefit-card {
+    position: relative;
+    isolation: isolate;
     min-height: 650px;
     overflow: hidden;
-    background: url("../images/wlh-card-back.png") center / 100% 100% no-repeat;
+    background: #050505;
+}
+
+.benefit-card::before {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    background: url("../images/wlh-card-back.png") center / cover no-repeat;
+    content: "";
+    transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.benefit-card:hover::before {
+    transform: scale(1.045);
 }
 
 .card-content {
+    position: relative;
+    z-index: 1;
     display: flex;
     min-height: 650px;
     padding: 34px 57px 34px;
@@ -825,6 +842,7 @@ a:focus-visible {
     border-radius: 8px;
     background: linear-gradient(110deg, rgba(2, 2, 2, 0.76), rgba(18, 12, 5, 0.5));
     box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
+    transition: border-color 420ms ease, box-shadow 420ms ease, transform 420ms ease;
 }
 
 .home-category-panel-fiction {
@@ -840,6 +858,7 @@ a:focus-visible {
     background:
         linear-gradient(90deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.74)),
         url("../images/categories-hero.png") center / cover no-repeat;
+    transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .home-category-panel-non-fiction .home-category-panel-media {
@@ -870,6 +889,17 @@ a:focus-visible {
     font-family: "Playfair Display", Georgia, serif;
     font-size: 42px;
     line-height: 1;
+}
+
+.home-category-panel-icon svg {
+    display: block;
+    width: 42px;
+    height: 42px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
 }
 
 .home-category-panel h3 {
@@ -1600,19 +1630,17 @@ a:focus-visible {
 .judging-standard {
     position: relative;
     overflow: hidden;
-
+    min-height: 720px;
+    font-family: "DM Sans", Arial, sans-serif;
     background:
-        radial-gradient(
-            circle at 50% 15%,
-            rgba(215, 165, 29, 0.08),
-            transparent 38%
-        ),
+        linear-gradient(90deg, rgba(2, 2, 2, 0.92) 0%, rgba(2, 2, 2, 0.72) 31%, rgba(2, 2, 2, 0.55) 100%),
+        linear-gradient(0deg, rgba(2, 2, 2, 0.86), rgba(2, 2, 2, 0.22) 45%, rgba(2, 2, 2, 0.92)),
+        url("../images/about-open-book.png") left bottom / 48% auto no-repeat,
+        url("../images/hero-section-image.jpeg") center / cover no-repeat,
         #050505;
-
     border-top: 1px solid rgba(215, 165, 29, 0.25);
     border-bottom: 1px solid rgba(215, 165, 29, 0.15);
-
-    padding: 100px 0 90px;
+    padding: 90px 0 70px;
 }
 
 
@@ -1647,11 +1675,13 @@ a:focus-visible {
 .judging-standard-inner {
     position: relative;
     z-index: 2;
-
-    width: min(1120px, calc(100% - 80px));
-
+    display: grid;
+    width: min(1840px, calc(100% - 140px));
     margin-left: auto;
     margin-right: auto;
+    grid-template-columns: minmax(360px, 0.92fr) minmax(820px, 1.75fr);
+    gap: clamp(50px, 5vw, 88px);
+    align-items: start;
 }
 
 
@@ -1660,9 +1690,10 @@ a:focus-visible {
    ========================================================= */
 
 .judging-intro {
-    max-width: 760px;
-
-    margin-bottom: 58px;
+    max-width: 660px;
+    min-height: 520px;
+    margin-bottom: 0;
+    padding-top: 5px;
 }
 
 
@@ -1670,15 +1701,11 @@ a:focus-visible {
 
 .judging-eyebrow {
     display: inline-block;
-
     margin-bottom: 18px;
-
-    color: #8da36a;
-
-    font-size: 10px;
+    color: var(--gold);
+    font-size: 15px;
     font-weight: 700;
-
-    letter-spacing: 2.2px;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
 }
 
@@ -1690,10 +1717,9 @@ a:focus-visible {
 
     display: inline-block;
 
-    width: 30px;
-    height: 1px;
-
-    margin-right: 12px;
+    width: 63px;
+    height: 2px;
+    margin-right: 17px;
 
     vertical-align: middle;
 
@@ -1705,21 +1731,15 @@ a:focus-visible {
 
 .judging-intro h2 {
     margin: 0;
-
     color: #f4eee2;
-
     font-family:
-        "Cormorant Garamond",
+        "Playfair Display",
         Georgia,
         serif;
-
-    font-size: clamp(42px, 5vw, 66px);
-
+    font-size: clamp(74px, 5.8vw, 120px);
     font-weight: 500;
-
-    line-height: 0.98;
-
-    letter-spacing: -1px;
+    line-height: 0.86;
+    letter-spacing: 0;
 }
 
 
@@ -1733,17 +1753,29 @@ a:focus-visible {
 /* intro paragraph */
 
 .judging-intro p {
-    max-width: 700px;
-
-    margin: 22px 0 0;
-
+    max-width: 620px;
+    margin: 30px 0 0;
     color: rgba(255, 255, 255, 0.72);
+    font-size: clamp(18px, 1.25vw, 24px);
+    line-height: 1.4;
+}
 
-    font-family: Arial, sans-serif;
+.judging-intro-rule {
+    display: block;
+    width: 125px;
+    height: 2px;
+    margin-top: 40px;
+    background: var(--gold);
+}
 
-    font-size: 14px;
-
-    line-height: 1.8;
+.judging-intro .judging-kicker {
+    margin-top: 28px;
+    color: var(--gold);
+    font-size: clamp(20px, 1.45vw, 29px);
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    line-height: 1.25;
+    text-transform: uppercase;
 }
 
 
@@ -1753,13 +1785,9 @@ a:focus-visible {
 
 .judging-process-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 28px;
-
-    margin-bottom: 62px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(28px, 2.95vw, 56px);
+    margin-bottom: 0;
 }
 
 
@@ -1767,33 +1795,81 @@ a:focus-visible {
 
 .judging-process-card {
     position: relative;
-
-    padding:
-        0
-        20px
-        20px
-        4px;
-
-    border-top:
-        1px solid
-        rgba(215, 165, 29, 0.55);
+    min-height: 575px;
+    overflow: hidden;
+    padding: 34px 40px 42px;
+    border: 1px solid rgba(215, 165, 29, 0.58);
+    border-radius: 20px;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.72) 53%, rgba(0, 0, 0, 0.46) 100%),
+        url("../images/about-open-book.png") center bottom / 110% auto no-repeat,
+        rgba(3, 3, 3, 0.85);
+    box-shadow: inset 0 0 45px rgba(215, 165, 29, 0.08), 0 24px 70px rgba(0, 0, 0, 0.42);
+    text-align: center;
+    transition: border-color 420ms ease, box-shadow 420ms ease, transform 420ms ease;
 }
 
+.judging-process-card:nth-child(2) {
+    background-image:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.78) 53%, rgba(0, 0, 0, 0.48) 100%),
+        url("../images/categories-hero.png");
+    background-position: center, center bottom;
+    background-size: auto, cover;
+}
 
-/* small gold line on top */
+.judging-process-card:nth-child(3) {
+    background-image:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.78) 53%, rgba(0, 0, 0, 0.48) 100%),
+        url("../images/awards-hero.png");
+    background-position: center, center bottom;
+    background-size: auto, cover;
+}
 
 .judging-process-card::after {
-    content: "";
-
+    content: "->";
     position: absolute;
+    top: 29%;
+    right: calc(clamp(28px, 2.95vw, 56px) / -2 - 27px);
+    z-index: 4;
+    display: grid;
+    width: 55px;
+    height: 55px;
+    place-items: center;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    color: var(--gold);
+    background: rgba(0, 0, 0, 0.82);
+    font-size: 30px;
+    line-height: 1;
+}
 
-    top: -1px;
-    left: 0;
+.judging-process-card:last-child::after {
+    display: none;
+}
 
-    width: 34%;
-    height: 2px;
+.judging-card-icon {
+    display: grid;
+    width: 92px;
+    height: 92px;
+    place-items: center;
+    margin: 0 auto 30px;
+    border: 3px solid rgba(215, 165, 29, 0.58);
+    border-radius: 50%;
+    color: var(--gold);
+    background: rgba(0, 0, 0, 0.34);
+    box-shadow: inset 0 0 0 1px rgba(255, 236, 168, 0.16), 0 0 26px rgba(215, 165, 29, 0.16);
+    font-size: 21px;
+    font-weight: 700;
+}
 
-    background: #d7a51d;
+.judging-card-icon svg {
+    width: 42px;
+    height: 42px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
 }
 
 
@@ -1801,39 +1877,43 @@ a:focus-visible {
 
 .step-number {
     display: block;
-
-    padding-top: 14px;
-
-    margin-bottom: 20px;
-
-    color: #8da36a;
-
-    font-size: 9px;
-
+    padding-top: 0;
+    margin-bottom: 16px;
+    color: var(--gold);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(58px, 4.6vw, 76px);
     font-weight: 700;
-
-    letter-spacing: 1.8px;
+    letter-spacing: 0;
+    line-height: 0.9;
 }
 
 
 /* process title */
 
 .judging-process-card h3 {
-    margin:
-        0
-        0
-        13px;
-
-    color: #d5a06f;
-
+    margin: 0;
+    color: #f7efe8;
     font-family:
-        "Cormorant Garamond",
+        "Playfair Display",
         Georgia,
         serif;
-
-    font-size: 22px;
-
+    font-size: clamp(30px, 2.2vw, 43px);
     font-weight: 500;
+    line-height: 1;
+}
+
+.judging-process-card:nth-child(3) h3 {
+    font-size: clamp(26px, 1.85vw, 36px);
+    line-height: 1.08;
+}
+
+.judging-process-card h3::after {
+    display: block;
+    width: 67px;
+    height: 3px;
+    margin: 24px auto 22px;
+    background: var(--gold);
+    content: "";
 }
 
 
@@ -1841,12 +1921,39 @@ a:focus-visible {
 
 .judging-process-card p {
     margin: 0;
+    color: rgba(255, 255, 255, 0.74);
+    font-size: clamp(16px, 1.08vw, 20px);
+    line-height: 1.42;
+}
 
-    color: rgba(255, 255, 255, 0.63);
+.judging-bottom-line {
+    grid-column: 2;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 40px;
+    color: var(--gold);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-align: center;
+    text-transform: uppercase;
+}
 
-    font-size: 11px;
+.judging-bottom-line::before,
+.judging-bottom-line::after {
+    height: 2px;
+    flex: 1;
+    background: rgba(215, 165, 29, 0.72);
+    content: "";
+}
 
-    line-height: 1.75;
+.judging-gallery[hidden] {
+    display: none;
+}
+
+.judging-standard .judging-pillars-intro {
+    display: none !important;
 }
 
 
@@ -2067,21 +2174,23 @@ a:focus-visible {
 
 
     .judging-standard-inner {
-        width:
-            min(
-                calc(100% - 50px),
-                1120px
-            );
+        width: min(calc(100% - 50px), 1120px);
+        grid-template-columns: 1fr;
     }
 
 
     .judging-process-grid {
-        gap: 20px;
+        grid-template-columns: 1fr;
+        gap: 24px;
     }
 
+    .judging-process-card {
+        min-height: 410px;
+    }
 
-    .judging-gallery {
-        height: 240px;
+    .judging-process-card::after,
+    .judging-bottom-line {
+        display: none;
     }
 
 }
@@ -2135,36 +2244,14 @@ a:focus-visible {
 
     .judging-process-grid {
         grid-template-columns: 1fr;
-
-        gap: 32px;
-
+        gap: 24px;
         margin-bottom: 45px;
     }
 
 
     .judging-process-card {
-        padding-right: 0;
-    }
-
-
-    /* =====================================================
-       MOBILE IMAGE GALLERY
-       ===================================================== */
-
-    .judging-gallery {
-        grid-template-columns:
-            1fr
-            1fr;
-
-        height: 330px;
-    }
-
-
-    /* large image spans both rows */
-
-    .judging-gallery-large {
-        grid-row:
-            span 2;
+        min-height: 385px;
+        padding: 30px 24px;
     }
 
 
@@ -2219,6 +2306,141 @@ a:focus-visible {
               
    ============================================================
    ============================================================ */
+
+/* Entrance motion and homepage section interactions */
+
+.main-navigation > * {
+    opacity: 0;
+    transform: translateX(110vw);
+    animation: home-nav-enter 1200ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.main-navigation > :nth-child(1) { animation-delay: 80ms; }
+.main-navigation > :nth-child(2) { animation-delay: 150ms; }
+.main-navigation > :nth-child(3) { animation-delay: 220ms; }
+.main-navigation > :nth-child(4) { animation-delay: 290ms; }
+.main-navigation > :nth-child(5) { animation-delay: 360ms; }
+.main-navigation > :nth-child(6) { animation-delay: 430ms; }
+.main-navigation > :nth-child(7) { animation-delay: 500ms; }
+.main-navigation > :nth-child(8) { animation-delay: 570ms; }
+
+@keyframes home-nav-enter {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animations-ready .home-page .about-copy[data-reveal],
+.animations-ready .home-page .about-quote[data-reveal],
+.animations-ready .home-page .benefit-card[data-reveal],
+.animations-ready .home-page .home-category-panel[data-reveal],
+.animations-ready .home-page .judging-process-card[data-reveal] {
+    transition-duration: 1600ms;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+.animations-ready .home-page .home-category-panel[data-reveal],
+.animations-ready .home-page .judging-process-card[data-reveal] {
+    transition-property: opacity, transform, border-color, box-shadow;
+    transition-duration: 1600ms, 1600ms, 420ms, 420ms;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1), cubic-bezier(0.22, 1, 0.36, 1), ease, ease;
+}
+
+.animations-ready .home-page .about-copy[data-reveal]:not(.is-visible) {
+    transform: translateX(-110vw);
+}
+
+.animations-ready .home-page .about-quote[data-reveal] {
+    transition-delay: 170ms;
+}
+
+.animations-ready .home-page .about-quote[data-reveal]:not(.is-visible) {
+    transform: translateX(110vw) rotate(0.7deg);
+}
+
+.animations-ready .home-page .about-quote[data-reveal].is-visible {
+    transform: translateX(0) rotate(0.7deg);
+}
+
+.animations-ready .home-page .benefit-card[data-reveal]:not(.is-visible) {
+    transform: translateX(110vw);
+}
+
+.animations-ready .home-page .benefit-card:nth-child(1) {
+    transition-delay: 70ms;
+}
+
+.animations-ready .home-page .benefit-card:nth-child(2) {
+    transition-delay: 290ms;
+}
+
+.animations-ready .home-page .home-category-panel-fiction:not(.is-visible) {
+    transform: translateX(-110vw);
+}
+
+.animations-ready .home-page .home-category-panel-non-fiction:not(.is-visible) {
+    transform: translateX(110vw);
+}
+
+.animations-ready .home-page .home-category-panel-non-fiction {
+    transition-delay: 180ms;
+}
+
+.animations-ready .home-page .home-category-panel[data-reveal].is-visible:hover {
+    border-color: rgba(239, 195, 78, 0.95);
+    box-shadow: 0 30px 82px rgba(0, 0, 0, 0.52), 0 0 28px rgba(215, 165, 29, 0.13);
+    transform: translateY(-8px) scale(1.01);
+}
+
+.home-page .home-category-panel:hover .home-category-panel-media {
+    transform: scale(1.06);
+}
+
+.animations-ready .home-page .judging-process-card[data-reveal]:not(.is-visible) {
+    transform: translateX(110vw);
+}
+
+.animations-ready .home-page .judging-process-card:nth-child(1) {
+    transition-delay: 60ms;
+}
+
+.animations-ready .home-page .judging-process-card:nth-child(2) {
+    transition-delay: 210ms;
+}
+
+.animations-ready .home-page .judging-process-card:nth-child(3) {
+    transition-delay: 360ms;
+}
+
+.animations-ready .home-page .judging-process-card[data-reveal].is-visible:hover {
+    border-color: rgba(239, 195, 78, 0.95);
+    box-shadow: inset 0 0 50px rgba(215, 165, 29, 0.12), 0 30px 82px rgba(0, 0, 0, 0.54);
+    transform: translateY(-10px) scale(1.012);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .main-navigation > * {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+
+    .animations-ready .home-page .home-category-panel[data-reveal].is-visible:hover,
+    .animations-ready .home-page .judging-process-card[data-reveal].is-visible:hover,
+    .home-page .home-category-panel:hover .home-category-panel-media {
+        transform: none;
+    }
+
+    .animations-ready .home-page .about-quote[data-reveal].is-visible {
+        transform: rotate(0.7deg);
+    }
+
+    .benefit-card::before {
+        transition: none;
+    }
+}
 
 
 /* ============================================================
