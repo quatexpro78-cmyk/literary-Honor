@@ -151,6 +151,30 @@
         </section>
     </main>
 
+    <!-- Category detail dialog, opened by clicking any category card -->
+    <div class="category-modal" id="category-modal" hidden>
+        <div class="category-modal-backdrop" data-category-modal-close></div>
+        <div class="category-modal-panel" role="dialog" aria-modal="true" aria-labelledby="category-modal-title">
+            <button class="category-modal-close" type="button" data-category-modal-close aria-label="Close category details">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span class="category-modal-type" id="category-modal-type"></span>
+            <h3 id="category-modal-title"></h3>
+            <span class="category-modal-rule" aria-hidden="true"></span>
+            <p class="category-modal-description" id="category-modal-description"></p>
+            <ul class="category-modal-points" id="category-modal-points"></ul>
+            <div class="category-modal-actions">
+                <a class="button button-primary" href="submit.html">Submit Your Book</a>
+                <a class="button button-secondary" href="judging.html">Judging Criteria</a>
+            </div>
+            <div class="category-modal-nav">
+                <button type="button" data-category-step="-1">&#8249; Previous</button>
+                <span id="category-modal-position"></span>
+                <button type="button" data-category-step="1">Next &#8250;</button>
+            </div>
+        </div>
+    </div>
+
     <footer class="site-footer">
         <div class="content-container footer-inner">
             <p>Literary Honors Awards</p>

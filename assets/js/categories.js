@@ -54,6 +54,110 @@ const getVisibleCategories = () => {
     });
 };
 
+/* =========================================================
+   CATEGORY DETAIL DIALOG
+   Opened by clicking (or pressing Enter/Space on) any card in
+   the category index. Previous / Next walk the same list that
+   is currently visible, so it follows the active filter.
+   ========================================================= */
+
+const categoryModalState = { id: null, lastFocused: null };
+
+const CATEGORY_MODAL_POINTS = [
+    "Judged on writing quality, originality, presentation and reader impact.",
+    "Open to books published from 2025 onward.",
+    "Enter up to five categories for the same book."
+];
+
+const openCategoryModal = (categoryId) => {
+    const modal = document.querySelector("#category-modal");
+    if (!modal || !categoryId) return;
+
+    const list = getVisibleCategories();
+    const category = list.find((item) => item.id === categoryId);
+    if (!category) return;
+
+    const position = list.indexOf(category);
+
+    modal.querySelector("#category-modal-type").textContent =
+        category.type === "non-fiction" ? "Non-Fiction" : "Fiction";
+    modal.querySelector("#category-modal-title").textContent = category.name;
+    modal.querySelector("#category-modal-description").textContent =
+        category.detail ?? category.description;
+    modal.querySelector("#category-modal-points").innerHTML = CATEGORY_MODAL_POINTS
+        .map((point) => `<li>${escapeCategoryHTML(point)}</li>`)
+        .join("");
+    modal.querySelector("#category-modal-position").textContent =
+        `${position + 1} of ${list.length}`;
+
+    modal.querySelectorAll("[data-category-step]").forEach((button) => {
+        const step = Number(button.dataset.categoryStep);
+        button.disabled = list.length < 2;
+        button.dataset.targetId = list[(position + step + list.length) % list.length]?.id ?? "";
+    });
+
+    if (categoryModalState.id === null) {
+        categoryModalState.lastFocused = document.activeElement;
+    }
+
+    categoryModalState.id = category.id;
+    modal.hidden = false;
+    document.body.classList.add("has-open-modal");
+
+    requestAnimationFrame(() => {
+        modal.classList.add("is-open");
+        modal.querySelector(".category-modal-close")?.focus();
+    });
+
+    const status = document.querySelector("#category-detail-status");
+    if (status) status.textContent = `${category.name} details opened.`;
+};
+
+const closeCategoryModal = () => {
+    const modal = document.querySelector("#category-modal");
+    if (!modal || modal.hidden) return;
+
+    modal.classList.remove("is-open");
+    categoryModalState.id = null;
+    document.body.classList.remove("has-open-modal");
+
+    window.setTimeout(() => {
+        modal.hidden = true;
+    }, 220);
+
+    categoryModalState.lastFocused?.focus?.();
+    categoryModalState.lastFocused = null;
+};
+
+const initCategoryModal = () => {
+    const modal = document.querySelector("#category-modal");
+    if (!modal) return;
+
+    modal.querySelectorAll("[data-category-modal-close]").forEach((element) => {
+        element.addEventListener("click", closeCategoryModal);
+    });
+
+    modal.querySelectorAll("[data-category-step]").forEach((button) => {
+        button.addEventListener("click", () => {
+            if (button.dataset.targetId) openCategoryModal(button.dataset.targetId);
+        });
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (modal.hidden) return;
+
+        if (event.key === "Escape") {
+            closeCategoryModal();
+        } else if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+            const step = event.key === "ArrowRight" ? 1 : -1;
+            const button = modal.querySelector(`[data-category-step="${step}"]`);
+            if (button && !button.disabled && button.dataset.targetId) {
+                openCategoryModal(button.dataset.targetId);
+            }
+        }
+    });
+};
+
 const renderCategoryGrid = () => {
     const grid = document.querySelector("#main-category-grid");
     const emptyState = document.querySelector("#category-empty-state");
@@ -69,7 +173,15 @@ const renderCategoryGrid = () => {
     grid.innerHTML = categories
         .map(
             (category, index) => `
-                <article class="main-category-card" data-reveal="up" style="transition-delay: ${(index % 9) * 55}ms">
+                <article
+                    class="main-category-card"
+                    data-reveal="up"
+                    data-category-id="${escapeCategoryHTML(category.id)}"
+                    role="button"
+                    tabindex="0"
+                    aria-haspopup="dialog"
+                    style="transition-delay: ${(index % 9) * 55}ms"
+                >
                     <span class="main-category-type">${escapeCategoryHTML(category.type)}</span>
                     <h3>${escapeCategoryHTML(category.name)}</h3>
                     <p>${escapeCategoryHTML(category.description)}</p>
@@ -78,10 +190,13 @@ const renderCategoryGrid = () => {
         )
         .join("");
 
-    grid.querySelectorAll(".main-category-card a").forEach((link) => {
-        link.addEventListener("click", (event) => {
-            event.preventDefault();
-            detailStatus.textContent = `${link.dataset.categoryName} detail page will be connected after the design phase.`;
+    grid.querySelectorAll(".main-category-card").forEach((card) => {
+        card.addEventListener("click", () => openCategoryModal(card.dataset.categoryId));
+        card.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                openCategoryModal(card.dataset.categoryId);
+            }
         });
     });
 
@@ -167,3 +282,4 @@ renderCategoryGrid();
 renderChoicePrinciples();
 renderEntryOptions();
 initializeCategoryControls();
+initCategoryModal();
