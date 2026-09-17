@@ -704,8 +704,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function render(animate) {
         const width = slideWidth();
-        const viewport = track.parentElement.getBoundingClientRect().width;
-        const offset = index * width - (viewport - width) / 2;
+        const viewport = track.parentElement.clientWidth;
+        // Measure the real slide position so the active card is always centred
+        // in the viewport, whatever the current slide width or breakpoint.
+        const offset = slides[index].offsetLeft - (viewport - width) / 2;
 
         track.style.transition = animate
             ? "transform 750ms cubic-bezier(0.22, 0.61, 0.36, 1)"
@@ -826,6 +828,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     window.addEventListener("resize", syncSlideWidth);
+    window.addEventListener("load", () => render(false));
+
+    if ("ResizeObserver" in window) {
+        new ResizeObserver(() => render(false)).observe(track.parentElement);
+    }
 
     syncSlideWidth();
     startAutoplay();

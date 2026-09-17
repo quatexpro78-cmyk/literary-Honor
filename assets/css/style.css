@@ -530,7 +530,7 @@ a:focus-visible {
 .award-value-section {
     position: relative;
     overflow: hidden;
-    padding: 34px 0 112px;
+    padding: 34px 0 72px;
     background:
         radial-gradient(circle at 50% 0%, rgba(164, 111, 0, 0.17), transparent 34%),
         #030303;
@@ -815,7 +815,7 @@ a:focus-visible {
 }
 
 .gallery-section {
-    padding: 14px 0 76px;
+    padding: 0 0 76px;
     overflow: hidden;
     background: #000;
 }
@@ -852,6 +852,7 @@ a:focus-visible {
     display: block;
     overflow: hidden;
     width: 100%;
+    margin: 0; /* reset the browser's default <figure> margin so the card stays centred */
     border: 1px solid rgba(215, 165, 29, 0.28);
     border-radius: 18px;
     background: #050505;
@@ -965,7 +966,7 @@ a:focus-visible {
 
 @media (max-width: 640px) {
     .gallery-section {
-        padding: 6px 0 48px;
+        padding: 0 0 48px;
     }
 
     .award-showcase {
@@ -1735,14 +1736,6 @@ a:focus-visible {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .gallery-section {
-        height: 330px;
-    }
-
-    .gallery-section img {
-        object-position: center;
-    }
-
     .about-image-wrap {
         height: 400px;
     }
@@ -1811,10 +1804,6 @@ a:focus-visible {
         height: 51px;
         padding-inline: 21px;
         font-size: 11px;
-    }
-
-    .gallery-section {
-        height: 250px;
     }
 
     .home-category-index {
