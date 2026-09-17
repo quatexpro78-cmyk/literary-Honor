@@ -3,7 +3,7 @@
 window.literaryHonorsWinners = {
     stats: [
         { value: "2026", label: "Award Year" },
-        { value: "62", label: "Awards" },
+        { value: "70+", label: "Awards" },
         { value: "8", label: "Featured Books" },
         { value: "Todd Michael Andaya", label: "Featured Author" }
     ],

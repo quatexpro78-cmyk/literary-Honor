@@ -14,7 +14,7 @@
 
 .awards-hero {
     position: relative;
-    min-height: 830px;
+    min-height: 680px;
     overflow: hidden;
     padding-top: clamp(63px, 6.667vw, 96px);
     border-bottom: 1px solid rgba(215, 165, 29, 0.24);
@@ -34,7 +34,7 @@
     position: relative;
     z-index: 2;
     max-width: 650px;
-    padding: 80px 28px 80px 0;
+    padding: 36px 28px 60px 0;
 }
 
 .awards-hero-eyebrow {
@@ -106,8 +106,7 @@
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(90deg, #020202 0%, rgba(2, 2, 2, 0.82) 12%, transparent 42%),
-        linear-gradient(0deg, rgba(2, 2, 2, 0.52), transparent 27%);
+        linear-gradient(90deg, #020202 0%, rgba(2, 2, 2, 0.82) 12%, transparent 42%);
     content: "";
     pointer-events: none;
 }
@@ -885,7 +884,7 @@
 
 @media (max-width: 1199px) {
     .awards-hero {
-        min-height: 760px;
+        min-height: 640px;
     }
 
     .awards-hero h1 {

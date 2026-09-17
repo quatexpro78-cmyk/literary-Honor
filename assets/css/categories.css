@@ -29,8 +29,7 @@
     z-index: 1;
     inset: 0;
     background:
-        linear-gradient(90deg, #020202 0%, rgba(2, 2, 2, 0.95) 37%, rgba(2, 2, 2, 0.23) 70%),
-        linear-gradient(0deg, rgba(2, 2, 2, 0.34), transparent 42%);
+        linear-gradient(90deg, #020202 0%, rgba(2, 2, 2, 0.95) 37%, transparent 62%);
     content: "";
     pointer-events: none;
 }

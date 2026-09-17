@@ -2,7 +2,7 @@
 
 window.literaryHonorsAwards = {
     stats: [
-        { value: "62", label: "Awards" },
+        { value: "70+", label: "Awards" },
         { value: "$65", label: "First Entry" },
         { value: "Up to 4", suffix: "Weeks", label: "To Your Result" },
         { value: "2025", suffix: "Present", label: "Eligible Publications" }
