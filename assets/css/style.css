@@ -1105,6 +1105,14 @@ a:focus-visible {
     transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.home-category-panel-fiction .home-category-panel-media {
+    background-image:
+        linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+        url("../images/categery-card-1.png");
+    background-position: center;
+    background-size: cover;
+}
+
 .home-category-panel-non-fiction .home-category-panel-media {
     position: absolute;
     top: 0;
@@ -1500,7 +1508,9 @@ a:focus-visible {
     min-height: 635px;
     align-items: center;
     background:
-        radial-gradient(ellipse at center, rgba(128, 88, 7, 0.13), transparent 54%),
+        radial-gradient(ellipse at center, rgba(3, 3, 3, 0.55), rgba(3, 3, 3, 0.2) 70%),
+        linear-gradient(180deg, rgba(3, 3, 3, 0.85) 0%, rgba(3, 3, 3, 0.45) 30%, rgba(3, 3, 3, 0.45) 70%, rgba(3, 3, 3, 0.9) 100%),
+        url("../images/hero-background-library.png") center / cover no-repeat,
         #030303;
 }
 
@@ -2102,14 +2112,14 @@ a:focus-visible {
     position: relative;
     min-height: 575px;
     overflow: hidden;
-    padding: 34px 24px 42px;
+    padding: 22px 24px 42px;
     border: 1px solid rgba(215, 165, 29, 0.58);
     border-radius: 20px;
     background:
         linear-gradient(180deg, #070707 0%, #070707 70%, rgba(7, 7, 7, 0.85) 75%, rgba(7, 7, 7, 0) 84%, rgba(7, 7, 7, 0) 100%),
-        url("../images/about-open-book.png") center bottom / 100% 27% no-repeat,
+        url("../images/category-card-1.png") center bottom / 100% auto no-repeat,
         #070707;
-    box-shadow: inset 0 0 45px rgba(215, 165, 29, 0.08), 0 24px 70px rgba(0, 0, 0, 0.42);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
     text-align: center;
     transition: border-color 420ms ease, box-shadow 420ms ease, transform 420ms ease;
 }
@@ -2117,37 +2127,37 @@ a:focus-visible {
 .judging-process-card:nth-child(2) {
     background-image:
         linear-gradient(180deg, #070707 0%, #070707 70%, rgba(7, 7, 7, 0.85) 75%, rgba(7, 7, 7, 0) 84%, rgba(7, 7, 7, 0) 100%),
-        url("../images/categories-hero.png");
+        url("../images/category-card-2.png");
     background-position: center, center bottom;
-    background-size: auto, 100% 27%;
+    background-size: auto, 100% auto;
 }
 
 .judging-process-card:nth-child(3) {
     background-image:
         linear-gradient(180deg, #070707 0%, #070707 70%, rgba(7, 7, 7, 0.85) 75%, rgba(7, 7, 7, 0) 84%, rgba(7, 7, 7, 0) 100%),
-        url("../images/awards-hero.png");
+        url("../images/category-card-3.png");
     background-position: center, center bottom;
-    background-size: auto, 100% 27%;
+    background-size: auto, 100% auto;
 }
 
 .judging-card-icon {
     display: grid;
-    width: 92px;
-    height: 92px;
+    width: 74px;
+    height: 74px;
     place-items: center;
-    margin: 0 auto 30px;
+    margin: 0 auto 18px;
     border: 3px solid rgba(215, 165, 29, 0.58);
     border-radius: 50%;
     color: var(--gold);
     background: rgba(0, 0, 0, 0.34);
-    box-shadow: inset 0 0 0 1px rgba(255, 236, 168, 0.16), 0 0 26px rgba(215, 165, 29, 0.16);
+    box-shadow: inset 0 0 0 1px rgba(255, 236, 168, 0.16), 0 0 26px rgba(215, 165, 29, 0.06);
     font-size: 21px;
     font-weight: 700;
 }
 
 .judging-card-icon svg {
-    width: 42px;
-    height: 42px;
+    width: 34px;
+    height: 34px;
     fill: none;
     stroke: currentColor;
     stroke-linecap: round;
@@ -2612,7 +2622,7 @@ a:focus-visible {
 
 .animations-ready .home-page .judging-process-card[data-reveal].is-visible:hover {
     border-color: rgba(239, 195, 78, 0.95);
-    box-shadow: inset 0 0 50px rgba(215, 165, 29, 0.12), 0 30px 82px rgba(0, 0, 0, 0.54);
+    box-shadow: 0 30px 82px rgba(0, 0, 0, 0.54);
     transform: translateY(-10px) scale(1.012);
 }
 
