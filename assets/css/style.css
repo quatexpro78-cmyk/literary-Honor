@@ -390,20 +390,32 @@ a:focus-visible {
         margin-left: 0;
     }
 
+    /* Phones: copy sits on a dark band at the top and the books and trophy
+       show in full underneath, instead of the wide art being cropped behind the text. */
     .hero {
-        height: 100svh;
-        min-height: 650px;
+        --hero-art-height: 74vw;
+        height: auto;
+        min-height: 0;
+        padding-bottom: var(--hero-art-height);
+        background-position: right bottom;
+        background-size: 160% auto;
     }
 
-    /* the hero art is busy at phone widths; darken it under the copy */
+    .hero-inner {
+        height: auto;
+        padding-top: 44px;
+        padding-bottom: 18px;
+    }
+
     .hero-vignette {
         background:
             linear-gradient(
-                180deg,
-                rgba(0, 0, 0, 0.55) 0%,
-                rgba(0, 0, 0, 0.3) 26%,
-                rgba(0, 0, 0, 0.62) 52%,
-                rgba(0, 0, 0, 0.82) 100%
+                0deg,
+                rgba(0, 0, 0, 0.3) 0%,
+                transparent 50px,
+                transparent calc(var(--hero-art-height) - 110px),
+                var(--black) var(--hero-art-height),
+                var(--black) 100%
             );
     }
 
