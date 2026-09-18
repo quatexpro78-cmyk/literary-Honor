@@ -58,6 +58,19 @@ a {
     justify-content: flex-end;
 }
 
+.site-brand {
+    display: flex;
+    margin-right: auto;
+    align-items: center;
+}
+
+.site-brand img {
+    display: block;
+    width: auto;
+    height: clamp(42px, 4.4vw, 60px);
+    border-radius: 50%;
+}
+
 .main-navigation {
     display: flex;
     align-items: center;
@@ -531,7 +544,7 @@ a:focus-visible {
     font-weight: 400;
 }
 
-.stat-item span {
+.stat-item > span {
     margin-top: 10px;
     font-size: clamp(10px, 0.833vw, 12px);
     font-weight: 700;
@@ -1786,7 +1799,7 @@ a:focus-visible {
         font-size: clamp(19px, 5.4vw, 26px);
     }
 
-    .stat-item span {
+    .stat-item > span {
         max-width: 130px;
         line-height: 1.35;
     }
@@ -1857,6 +1870,28 @@ a:focus-visible {
         justify-self: center;
         padding: 40px 30px 36px;
         font-size: 20px;
+    }
+}
+
+/* Stacked benefit cards: fit the card to its content and anchor the art to
+   the right, so the laurel and quill show whole instead of being cropped. */
+@media (max-width: 900px) {
+    .benefit-card,
+    .card-content {
+        min-height: 0;
+    }
+
+    .card-content {
+        gap: 0;
+    }
+
+    .card-content .outline-cta {
+        margin-top: 34px;
+    }
+
+    .benefit-card::before {
+        background-position: right center;
+        opacity: 0.7;
     }
 }
 
@@ -3772,3 +3807,54 @@ a:focus-visible {
               
    ============================================================
    ============================================================ */
+
+/* Judging section on tablets and phones:
+   - the open-book art sits directly under the intro instead of trailing the cards
+   - no empty gap between the intro and the cards
+   - card text sits on its own dark area, with each card's image in full below it */
+@media (max-width: 900px) {
+    .judging-standard {
+        background:
+            radial-gradient(55% 48% at 12% 22%, rgba(215, 165, 29, 0.12), transparent 70%),
+            #050505;
+    }
+
+    .judging-intro {
+        min-height: 0;
+        margin-bottom: 8px;
+        padding-bottom: calc(66.7% + 10px);
+        background: url("../images/about-open-book.png") center bottom / 100% auto no-repeat;
+    }
+
+    .judging-process-card {
+        min-height: 0;
+        padding: 16px 24px 86.5%;
+        background-color: #070707;
+        background-position: center bottom;
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+    }
+
+    .judging-process-card:nth-child(1) {
+        padding-bottom: 75.8%;
+        background-image: url("../images/category-card-1.png");
+    }
+
+    .judging-process-card:nth-child(2) {
+        background-image: url("../images/category-card-2.png");
+    }
+
+    .judging-process-card:nth-child(3) {
+        background-image: url("../images/category-card-3.png");
+    }
+
+    .judging-process-card:nth-child(2),
+    .judging-process-card:nth-child(3) {
+        background-position: center bottom;
+        background-size: 100% auto;
+    }
+
+    .judging-card-icon {
+        margin-bottom: 10px;
+    }
+}

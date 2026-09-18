@@ -8,47 +8,6 @@ const awardsIcon = (name) => `
     </svg>
 `;
 
-/* Wrap the numeric part of a stat (e.g. "70+", "$65") so it can count up from 0. */
-const formatStatValue = (value) => {
-    const match = String(value).match(/^([^\d]*)(\d+)([^\d]*)$/);
-    if (!match || /[a-z]/i.test(value) || Number(match[2]) >= 1000) return value;
-    return `${match[1]}<span class="stat-count" data-count="${match[2]}">0</span>${match[3]}`;
-};
-
-const animateStatCounts = () => {
-    const counters = document.querySelectorAll("#award-stats .stat-count");
-    if (!counters.length) return;
-
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion || !("IntersectionObserver" in window)) {
-        counters.forEach((counter) => { counter.textContent = counter.dataset.count; });
-        return;
-    }
-
-    const countUp = (counter) => {
-        const target = Number(counter.dataset.count);
-        const duration = 1400;
-        const start = performance.now();
-        const tick = (now) => {
-            const progress = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            counter.textContent = Math.round(target * eased);
-            if (progress < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            countUp(entry.target);
-            observer.unobserve(entry.target);
-        });
-    }, { threshold: 0.5 });
-
-    counters.forEach((counter) => observer.observe(counter));
-};
-
 const renderAwardStats = () => {
     const container = document.querySelector("#award-stats");
     if (!container) return;
@@ -57,7 +16,7 @@ const renderAwardStats = () => {
         .map(
             (stat, index) => `
                 <div class="stat-item" data-reveal="up" style="transition-delay: ${index * 100}ms">
-                    <strong>${formatStatValue(stat.value)}${stat.suffix ? ` <small>${stat.suffix}</small>` : ""}</strong>
+                    <strong>${stat.value}${stat.suffix ? ` <small>${stat.suffix}</small>` : ""}</strong>
                     <span>${stat.label}</span>
                 </div>
             `
@@ -234,7 +193,6 @@ const initializeTestimonials = () => {
 };
 
 renderAwardStats();
-animateStatCounts();
 renderAwardSteps();
 renderEligibility();
 renderCategoryPreview();

@@ -2,7 +2,7 @@
 
 window.literaryHonorsCategories = {
     summary: [
-        { value: "70+", label: "Awards" },
+        { value: "60+", label: "Awards" },
         { value: "Fiction", label: "Multiple Genres" },
         { value: "Non-Fiction", label: "Multiple Subjects" },
         { value: "Up to 5", label: "Category Entries" }
