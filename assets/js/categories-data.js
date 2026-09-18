@@ -784,9 +784,9 @@ window.literaryHonorsCategories = {
     // Temporary frontend pricing configuration. Replace when the final business values are approved.
     entryOptions: [
         { count: "1", label: "Category", price: "$65", saving: "" },
-        { count: "2", label: "Categories", price: "$139", saving: "Save $19" },
-        { count: "3", label: "Categories", price: "$189", saving: "Save $48" },
-        { count: "4", label: "Categories", price: "$229", saving: "Save $87" },
-        { count: "5", label: "Categories", price: "$259", saving: "Save $136" }
+        { count: "2", label: "Categories", price: "$125", saving: "Save $5" },
+        { count: "3", label: "Categories", price: "$180", saving: "Save $15" },
+        { count: "4", label: "Categories", price: "$230", saving: "Save $30" },
+        { count: "5", label: "Categories", price: "$275", saving: "Save $50" }
     ]
 };

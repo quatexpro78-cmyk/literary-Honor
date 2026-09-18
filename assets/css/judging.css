@@ -47,7 +47,7 @@
             rgba(3,3,3,.6) 42%,
             rgba(3,3,3,0) 68%
         ),
-        url("../images/jugrp.png") center / cover no-repeat;
+        url("../images/jugrp.jpeg") center / cover no-repeat;
 }
 
 
@@ -411,21 +411,22 @@
 
 
 .criteria-intro h2 {
-    max-width: 700px;
+    max-width: none;
+    white-space: nowrap;
 
     margin: 17px 0 0;
 
     color: var(--lh-cream);
 
     font-family: "Cormorant Garamond", serif;
-    font-size: clamp(54px, 6.5vw, 88px);
+    font-size: clamp(26px, 4.1vw, 66px);
     font-weight: 500;
-    line-height: 0.91;
+    line-height: 1.05;
 }
 
 
 .criteria-intro h2 span {
-    display: block;
+    display: inline;
     color: var(--lh-gold);
 }
 

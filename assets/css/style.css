@@ -81,7 +81,7 @@ a {
 .navigation-link {
     position: relative;
     color: #b9b9b9;
-    font-size: clamp(10px, 1.154vw, 16.62px);
+    font-size: clamp(9px, 1vw, 14.5px);
     font-weight: 500;
     line-height: 1;
     text-transform: uppercase;
@@ -131,6 +131,12 @@ a {
     text-transform: uppercase;
 }
 
+.header-meeting {
+    border: 1px solid rgba(215, 165, 29, 0.6);
+    color: var(--gold);
+    background: transparent;
+}
+
 .hero {
     --hero-bg-x: 0px;
     --hero-bg-y: 0px;
@@ -154,7 +160,8 @@ a {
     padding-top: clamp(63px, 6.667vw, 96px);
     background-color: var(--black);
     background-image: url("../images/hero-section-image.jpeg");
-    background-position: center;
+    /* nudged right so the books clear the headline on the left */
+    background-position: 0% center;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -177,9 +184,9 @@ a {
         linear-gradient(0deg, rgba(0, 0, 0, 0.12) 0%, transparent 29%),
         linear-gradient(
             90deg,
-            rgba(0, 0, 0, 0.58) 0%,
-            rgba(0, 0, 0, 0.36) 32%,
-            rgba(0, 0, 0, 0.12) 58%,
+            rgba(0, 0, 0, 0.82) 0%,
+            rgba(0, 0, 0, 0.62) 32%,
+            rgba(0, 0, 0, 0.2) 58%,
             transparent 100%
         );
 }
@@ -236,7 +243,13 @@ a {
     -webkit-text-fill-color: transparent;
 }
 
+.hero-description br {
+    /* the copy wraps on its own now that it is narrower */
+    display: none;
+}
+
 .hero-description {
+    max-width: 40ch;
     margin: clamp(23px, 2.431vw, 35px) 0 0;
     color: var(--white);
     font-size: clamp(13px, 1.389vw, 20px);

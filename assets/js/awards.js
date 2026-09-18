@@ -161,7 +161,9 @@ const initializeTestimonials = () => {
     const renderTestimonial = () => {
         const testimonial = testimonials[activeIndex];
         stage.innerHTML = `
-            <figure class="testimonial-portrait" aria-hidden="true"></figure>
+            <figure class="testimonial-portrait">
+                <img src="${sitePath(testimonial.image)}" alt="${testimonial.alt}" loading="lazy">
+            </figure>
             <blockquote class="testimonial-quote">
                 <span class="testimonial-placeholder-label">Sample testimonial</span>
                 <p>“${testimonial.quote}”</p>

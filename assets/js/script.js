@@ -653,8 +653,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const AWARDS = [
         { src: "assets/images/h-a-1.png", alt: "Literary Honors awards stage" },
         { src: "assets/images/h-a-2.png", alt: "Literary Honors winners with their awards" },
-        { src: "assets/images/h-a-3.png", alt: "Literary Honors award recipients celebrating" },
-        { src: "assets/images/gallery-winners.jpeg", alt: "Literary Honors award ceremony" }
+        { src: "assets/images/h-a-3.png", alt: "Literary Honors award recipients celebrating" }
     ];
 
     const count = AWARDS.length;

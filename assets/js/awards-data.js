@@ -70,9 +70,9 @@ window.literaryHonorsAwards = {
         }
     ],
     winners: [
-        { title: "Returning Home", category: "Memoir", year: "Featured Book", cover: "returning-home", image: "assets/images/RETURNING HOME.png" },
-        { title: "When the Breath", category: "Memoir", year: "Featured Book", cover: "when-the-breath", image: "assets/images/WHEN THE BREATH (1).png" },
-        { title: "The Dogs Who Taught Me", category: "Inspirational", year: "Featured Book", cover: "dogs-who-taught-me", image: "assets/images/THE DOGS WHO TUAUGHT ME (1).png" },
+        { title: "Returning Home", category: "Memoir", year: "Featured Book", cover: "returning-home", image: "assets/images/literary archive/2.jpeg" },
+        { title: "When the Breath", category: "Memoir", year: "Featured Book", cover: "when-the-breath", image: "assets/images/literary archive/1.jpeg" },
+        { title: "The Dogs Who Taught Me", category: "Inspirational", year: "Featured Book", cover: "dogs-who-taught-me", image: "assets/images/literary archive/3.jpeg" },
         { title: "Moms", category: "Personal Stories", year: "Featured Book", cover: "moms", image: "assets/images/Moms NEW (3).png" },
         { title: "Coming Soon", category: "Literary Honors", year: "Coming Soon", cover: "coming-soon-1", image: "assets/images/Coming Soon Book Poster.png" },
         { title: "Coming Soon", category: "Literary Honors", year: "Coming Soon", cover: "coming-soon-2", image: "assets/images/Coming Soon Book Poster2.png" },
@@ -84,14 +84,14 @@ window.literaryHonorsAwards = {
             quote: "The Literary Honors Book Awards gave my book the recognition it truly deserved. The process was professional, thoughtful and inspiring.",
             author: "Sample Author",
             recognition: "Demonstration testimonial",
-            image: "assets/images/testimonial-author-placeholder.png",
+            image: "assets/images/author.jpeg",
             alt: "Fictional author portrait used as placeholder testimonial imagery"
         },
         {
             quote: "Thoughtful evaluation and a clear process made the experience feel considered from beginning to end.",
             author: "Sample Author",
             recognition: "Demonstration testimonial",
-            image: "assets/images/testimonial-author-placeholder.png",
+            image: "assets/images/author.jpeg",
             alt: "Fictional author portrait used as placeholder testimonial imagery"
         }
     ]
