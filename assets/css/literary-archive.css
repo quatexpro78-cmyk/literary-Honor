@@ -1327,18 +1327,18 @@
 
     padding: 0 26px;
 
-    border:
-        1px solid
-        #cda34a;
+    border: 0;
 
-    background:
-        linear-gradient(
-            135deg,
-            #d9b35b,
-            #b88629
-        );
+    background: linear-gradient(
+        110deg,
+        #a77708,
+        #f3cf50 30%,
+        #d09c17 53%,
+        #f6dc68 73%,
+        #bd850b
+    );
 
-    color: #090909;
+    color: #030303;
 
     font-size: 10px;
     font-weight: 800;
