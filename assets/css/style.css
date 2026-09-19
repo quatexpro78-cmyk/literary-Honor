@@ -1981,7 +1981,6 @@ a:focus-visible {
         radial-gradient(48% 42% at 88% 78%, rgba(215, 165, 29, 0.08), transparent 70%),
         linear-gradient(90deg, rgba(5, 5, 5, 0) 0%, rgba(5, 5, 5, 0) 22%, rgba(5, 5, 5, 0.85) 34%, #050505 42%),
         linear-gradient(0deg, rgba(5, 5, 5, 0) 0%, rgba(5, 5, 5, 0) 40%, rgba(5, 5, 5, 0.7) 62%, #050505 82%),
-        url("../images/about-open-book.png") left bottom / 34% auto no-repeat,
         #050505;
     border-top: 1px solid rgba(215, 165, 29, 0.25);
     border-bottom: 1px solid rgba(215, 165, 29, 0.15);
@@ -3834,9 +3833,7 @@ a:focus-visible {
 
     .judging-intro {
         min-height: 0;
-        margin-bottom: 8px;
-        padding-bottom: calc(66.7% + 10px);
-        background: url("../images/about-open-book.png") center bottom / 100% auto no-repeat;
+        margin-bottom: 18px;
     }
 
     .judging-process-card {

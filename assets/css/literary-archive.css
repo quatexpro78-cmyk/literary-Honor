@@ -454,14 +454,16 @@
 
     border: 0;
 
-    background:
-        linear-gradient(
-            135deg,
-            #d9b158,
-            #b98a2e
-        );
+    background: linear-gradient(
+        110deg,
+        #a77708,
+        #f3cf50 30%,
+        #d09c17 53%,
+        #f6dc68 73%,
+        #bd850b
+    );
 
-    color: #090909;
+    color: #030303;
 
     font-size: 10px;
     font-weight: 800;

@@ -29,7 +29,9 @@
 
 .about-hero {
     position: relative;
-    min-height: 860px;
+    min-height: min(860px, 100svh);
+    /* clear the fixed header on short screens */
+    padding-top: clamp(63px, 6.667vw, 96px);
     overflow: hidden;
     border-bottom: 0;
     background:
@@ -54,7 +56,7 @@
 
 .about-hero-inner {
     display: grid;
-    min-height: 850px;
+    min-height: min(850px, 100svh);
     align-items: center;
     grid-template-columns: 48% 52%;
     padding-top: 0px;
@@ -1008,7 +1010,7 @@
 @media (max-width: 900px) {
     .about-hero,
     .about-hero-inner {
-        min-height: 780px;
+        min-height: min(780px, 100svh);
     }
 
     .about-hero-inner {

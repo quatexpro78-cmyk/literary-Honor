@@ -700,7 +700,7 @@
     margin: 0 0 4px;
     color: #f3efe7;
     font-family: "Playfair Display", Georgia, serif;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 400;
     letter-spacing: normal;
     text-transform: none;
@@ -708,9 +708,9 @@
 
 
 .category-popup-tagline {
-    margin: 10px 0 20px;
+    margin: 8px 0 18px;
     color: #e6d9a8;
-    font-size: 13px;
+    font-size: 11px;
     font-style: italic;
     font-weight: 600;
     line-height: 1.6;
@@ -720,7 +720,7 @@
 }
 
 .category-popup-field {
-    margin-bottom: 16px;
+    margin-bottom: 13px;
 }
 
 .category-popup-field[hidden] {
@@ -739,8 +739,8 @@
 
 .category-popup-field select {
     width: 100%;
-    height: 46px;
-    padding: 0 34px 0 14px;
+    height: 38px;
+    padding: 0 32px 0 12px;
     border: 1px solid rgba(255, 255, 255, 0.14);
     background-color: #0d0d0d;
     color: #f3efe7;
@@ -750,7 +750,7 @@
     background-image:
         linear-gradient(45deg, transparent 50%, #d7a818 50%),
         linear-gradient(135deg, #d7a818 50%, transparent 50%);
-    background-position: calc(100% - 18px) 20px, calc(100% - 12px) 20px;
+    background-position: calc(100% - 17px) 16px, calc(100% - 11px) 16px;
     background-size: 6px 6px, 6px 6px;
     background-repeat: no-repeat;
 }
@@ -764,14 +764,29 @@
     flex: 1;
     min-height: 0;
     overflow-y: auto;
-    padding-right: 4px;
+    padding-right: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: #d7a818 rgba(255, 255, 255, 0.06);
+}
+
+.category-popup-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.category-popup-body::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.category-popup-body::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: linear-gradient(180deg, #f3cf50, #a77708);
 }
 
 .category-done {
     flex-shrink: 0;
     width: 100%;
-    height: 46px;
-    margin-top: 18px;
+    height: 38px;
+    margin-top: 14px;
     border: 0;
     background: linear-gradient(100deg, #a77708, #f3cf50, #ad7909);
     color: #050505;
