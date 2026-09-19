@@ -117,7 +117,15 @@ const initializeRevealAnimations = () => {
         ".home-page .about-quote[data-reveal]",
         ".home-page .benefit-card[data-reveal]",
         ".home-page .home-category-panel[data-reveal]",
-        ".home-page .judging-process-card[data-reveal]"
+        ".home-page .judging-process-card[data-reveal]",
+        ".about-page [data-reveal='left']",
+        ".about-page [data-reveal='right']",
+        ".about-page [data-reveal='scale']",
+        ".about-page [data-reveal='up']",
+        ".awards-page [data-reveal='left']",
+        ".awards-page [data-reveal='right']",
+        ".awards-page [data-reveal='scale']",
+        ".awards-page [data-reveal='up']"
     ].join(",");
 
     const revealTargets = new Map();

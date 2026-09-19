@@ -2596,6 +2596,54 @@ a:focus-visible {
     }
 }
 
+.animations-ready .awards-page [data-reveal] {
+    transition-duration: 1600ms;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+.animations-ready .awards-page [data-reveal="left"]:not(.is-visible) {
+    transform: translateX(-110vw);
+}
+
+.animations-ready .awards-page [data-reveal="right"]:not(.is-visible) {
+    transform: translateX(110vw);
+}
+
+.animations-ready .awards-page [data-reveal="scale"]:not(.is-visible) {
+    transform: scale(0.94);
+}
+
+.animations-ready .awards-page [data-reveal="up"]:not(.is-visible) {
+    transform: translateY(46px);
+}
+
+.animations-ready .about-page [data-reveal] {
+    transition-duration: 1600ms;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+.animations-ready .about-page [data-reveal="left"]:not(.is-visible) {
+    transform: translateX(-110vw);
+}
+
+.animations-ready .about-page [data-reveal="right"]:not(.is-visible) {
+    transform: translateX(110vw);
+}
+
+.animations-ready .about-page [data-reveal="right"] {
+    transition-delay: 150ms;
+}
+
+.animations-ready .about-page [data-reveal="scale"]:not(.is-visible) {
+    transform: scale(0.94);
+}
+
+.animations-ready .about-page [data-reveal="up"]:not(.is-visible) {
+    transform: translateY(46px);
+}
+
 .animations-ready .home-page .about-copy[data-reveal],
 .animations-ready .home-page .about-quote[data-reveal],
 .animations-ready .home-page .benefit-card[data-reveal],
