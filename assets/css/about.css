@@ -932,11 +932,14 @@
 
 .about-final-cta {
     min-height: 635px;
+    /* breathing room above the closing call to action */
+    margin-top: 70px;
     background: #000;
 }
 
 .about-final-cta > img {
-    object-position: center;
+    /* keep the winner medal inside the frame */
+    object-position: right center;
 }
 
 .about-final-cta::after {
