@@ -43,6 +43,44 @@ final class EmailService
         }
     }
 
+    public function sendResultDateEmail(int $submissionId, string $resultDate): void
+    {
+        $submission = $this->submissionRecipient($submissionId);
+        $subject = 'Your Literary Honors review result date';
+        $message = "Hello {$submission['first_name']},\n\n"
+            . "Your book \"{$submission['book_title']}\" is under review. Your result will be shared by {$resultDate}.\n\n"
+            . "Literary Honors Book Awards";
+        $this->deliver($submissionId, (string) $submission['email'], 'author_result_date', $subject, $message);
+    }
+
+    public function sendFinalDecisionEmail(int $submissionId, float $score, string $decision, string $notes): void
+    {
+        $submission = $this->submissionRecipient($submissionId);
+        $isWinner = $decision === 'winner';
+        $subject = $isWinner ? 'Congratulations — your book is a Literary Honors winner' : 'Your Literary Honors review is complete';
+        $result = $isWinner ? 'has been selected as a winner' : 'was not selected for an award this cycle';
+        $message = "Hello {$submission['first_name']},\n\n"
+            . "The review of \"{$submission['book_title']}\" is complete. Your score: {$score}.\n"
+            . "Your book {$result}.\n\n"
+            . ($notes !== '' ? "Review notes:\n{$notes}\n\n" : '')
+            . "Literary Honors Book Awards";
+        $this->deliver($submissionId, (string) $submission['email'], 'author_final_result', $subject, $message);
+    }
+
+    /** @return array<string, mixed> */
+    private function submissionRecipient(int $submissionId): array
+    {
+        $statement = Database::connection()->prepare(
+            'SELECT s.book_title, a.first_name, a.email FROM submissions s INNER JOIN authors a ON a.id = s.author_id WHERE s.id = :submission_id LIMIT 1'
+        );
+        $statement->execute(['submission_id' => $submissionId]);
+        $submission = $statement->fetch();
+        if ($submission === false) {
+            throw new RuntimeException('Unable to find the submitted book for email delivery.');
+        }
+        return $submission;
+    }
+
     private function deliver(int $submissionId, string $recipient, string $template, string $subject, string $text): void
     {
         $logId = $this->createLog($submissionId, $recipient, $template, $subject);

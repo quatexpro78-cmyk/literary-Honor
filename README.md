@@ -42,6 +42,10 @@ Enter the one-time `ADMIN_SETUP_KEY` stored in `.env` and set Todd's account
 password. The setup page automatically becomes unavailable once an admin
 exists; Todd then signs in at `/admin/login.php`.
 
+The review queue provides secure manuscript and cover downloads, a result-date
+email action, and a final score/decision action. In sandbox email log mode,
+these email actions are recorded rather than delivered.
+
 ## Structure
 
 ```
