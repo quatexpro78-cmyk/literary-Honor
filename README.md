@@ -22,9 +22,10 @@ Composer, SSH, or cPanel Terminal access.
 4. Keep the project files in `public_html`. The included `.htaccess` blocks
    direct web access to `.env` and enables basic security headers.
 
-The first backend commit provides the schema and secure PDO connection only.
-Submission forms, payment verification, email delivery, Todd's admin panel,
-and winner publishing are added in separate commits.
+The submission form now creates a payment-pending record and sends the author
+to Stripe Checkout. Add Stripe **test** keys to `.env` before testing it. A
+successful payment still needs the webhook commit before it becomes a final
+submission and triggers email notifications.
 
 ## Structure
 

@@ -365,7 +365,8 @@
         </div>
 
 
-        <form class="book-submission-form">
+        <form class="book-submission-form" method="post" action="../api/create-checkout-session.php" enctype="multipart/form-data">
+            <input type="hidden" name="csrf_token" value="">
 
 
             <!-- AUTHOR INFORMATION -->
@@ -508,7 +509,7 @@
                             Book Categories
                         </label>
 
-                        <select id="category" name="category" multiple data-max-categories="5">
+                        <select id="category" name="category[]" multiple data-max-categories="5">
 
                             <option value="">
                                 Select up to 5 categories
@@ -717,7 +718,8 @@
 
                     <input
                         type="checkbox"
-                        name="agreement"
+                            name="agreement"
+                            value="1"
                     >
 
                     <span>
@@ -734,15 +736,12 @@
 
             <div class="form-submit">
 
-                <span class="coming-soon-wrap">
                 <button
                     type="submit"
                     class="gold-btn large-submit-btn"
                 >
-                    SUBMIT YOUR BOOK
+                    CONTINUE TO SECURE PAYMENT
                 </button>
-                    <small class="coming-soon-note">Coming Soon</small>
-                </span>
 
             </div>
 

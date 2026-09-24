@@ -6,6 +6,15 @@
     const select = document.querySelector(".book-submission-form #category");
     if (!select) return;
 
+    const form = select.form;
+    const csrfInput = form.querySelector('input[name="csrf_token"]');
+    fetch("../api/csrf.php", { credentials: "same-origin" })
+        .then((response) => response.ok ? response.json() : null)
+        .then((data) => {
+            if (data?.token && csrfInput) csrfInput.value = data.token;
+        })
+        .catch(() => {});
+
     const data = window.literaryHonorsCategories ?? {};
     const allCategories = (data.categories ?? []).filter((item) => item.active !== false);
     const packages = data.entryOptions ?? [];
@@ -194,7 +203,7 @@
     typeField.dropdown.addEventListener("change", () => { fillChoices(); updateSelection(); });
     choiceFields.forEach(({ dropdown }) => dropdown.addEventListener("change", updateSelection));
 
-    select.form.addEventListener("reset", () => {
+    form.addEventListener("reset", () => {
         closeMenu();
         window.setTimeout(() => {
             countField.dropdown.selectedIndex = 0;
