@@ -82,7 +82,7 @@ window.literaryHonorsAwards = {
     testimonials: [
         {
             quote: "The Literary Honors Book Awards gave my book the recognition it truly deserved. The process was professional, thoughtful and inspiring.",
-            author: "Sample Author",
+            author: "Muhammad Arif",
             recognition: "Demonstration testimonial",
             image: "assets/images/author.jpeg",
             alt: "Fictional author portrait used as placeholder testimonial imagery"
