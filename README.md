@@ -35,6 +35,13 @@ For production, create a Resend account, verify `literaryhonor.com`, then set
 `MAIL_PROVIDER=resend`, `RESEND_API_KEY`, `MAIL_FROM_EMAIL`, and
 `TODD_NOTIFICATION_EMAIL` in `.env`.
 
+## First admin account
+
+After importing the schema and uploading `.env`, browse to `/admin/setup.php`.
+Enter the one-time `ADMIN_SETUP_KEY` stored in `.env` and set Todd's account
+password. The setup page automatically becomes unavailable once an admin
+exists; Todd then signs in at `/admin/login.php`.
+
 ## Structure
 
 ```
