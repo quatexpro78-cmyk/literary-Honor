@@ -1,6 +1,8 @@
 # local scratch and QA output
 tmp/
 .qa-*
+.env
+/storage/uploads/
 
 # editor and tooling
 .vscode/

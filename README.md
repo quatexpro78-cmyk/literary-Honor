@@ -1,9 +1,30 @@
 # Literary Honors
 
-Static marketing site for the Literary Honors Book Awards, deployed with
-GitHub Pages from `main`.
+Marketing site for the Literary Honors Book Awards. The site currently has
+static public pages, with a Core PHP + MySQL submission backend being added
+for Namecheap Stellar hosting.
 
 Live: https://quatexpro78-cmyk.github.io/literary-Honor/
+
+## PHP backend setup (Namecheap Stellar)
+
+The production site uses Core PHP 8.1+ and MySQL; it does not require Node,
+Composer, SSH, or cPanel Terminal access.
+
+1. In cPanel, create a MySQL database and database user, then assign the user
+   full privileges to that database.
+2. In phpMyAdmin, import `database/schema.sql`. If your cPanel database name
+   has a prefix, replace `literary_honors` in the first two SQL statements with
+   that exact database name before importing.
+3. Copy `.env.example` to `.env`, enter the cPanel database credentials and
+   Todd's notification email, then upload `.env` through File Manager. Never
+   commit this file to Git.
+4. Keep the project files in `public_html`. The included `.htaccess` blocks
+   direct web access to `.env` and enables basic security headers.
+
+The first backend commit provides the schema and secure PDO connection only.
+Submission forms, payment verification, email delivery, Todd's admin panel,
+and winner publishing are added in separate commits.
 
 ## Structure
 
