@@ -29,6 +29,12 @@ Stripe dashboard, add `https://literaryhonor.com/api/stripe-webhook.php` as a
 secret as `STRIPE_WEBHOOK_SECRET`. The webhook—not the browser redirect—is
 what marks a paid entry as submitted for review.
 
+For safe sandbox testing set `MAIL_PROVIDER=log`: no external email is sent,
+but each message is recorded in PHP's error log and the `email_logs` table.
+For production, create a Resend account, verify `literaryhonor.com`, then set
+`MAIL_PROVIDER=resend`, `RESEND_API_KEY`, `MAIL_FROM_EMAIL`, and
+`TODD_NOTIFICATION_EMAIL` in `.env`.
+
 ## Structure
 
 ```

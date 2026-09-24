@@ -26,10 +26,13 @@ final class StripeWebhook
         if (($session['payment_status'] ?? '') !== 'paid' || empty($session['id'])) {
             return;
         }
-        $this->markPaymentVerified((string) $session['id']);
+        $submissionId = $this->markPaymentVerified((string) $session['id']);
+        if ($submissionId !== null) {
+            (new EmailService())->sendSubmissionReceivedEmails($submissionId);
+        }
     }
 
-    private function markPaymentVerified(string $checkoutSessionId): void
+    private function markPaymentVerified(string $checkoutSessionId): ?int
     {
         $pdo = Database::connection();
         $pdo->beginTransaction();
@@ -42,7 +45,7 @@ final class StripeWebhook
             }
             if ($payment['status'] === 'paid') {
                 $pdo->commit();
-                return;
+                return null;
             }
 
             $paymentUpdate = $pdo->prepare('UPDATE payments SET status = "paid", verified_at = NOW() WHERE provider = "stripe" AND provider_payment_id = :session_id');
@@ -50,6 +53,7 @@ final class StripeWebhook
             $submissionUpdate = $pdo->prepare('UPDATE submissions SET payment_status = "verified", status = "submitted", submitted_at = COALESCE(submitted_at, NOW()) WHERE id = :submission_id');
             $submissionUpdate->execute(['submission_id' => (int) $payment['submission_id']]);
             $pdo->commit();
+            return (int) $payment['submission_id'];
         } catch (\Throwable $exception) {
             if ($pdo->inTransaction()) {
                 $pdo->rollBack();
