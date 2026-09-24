@@ -650,7 +650,7 @@ document.addEventListener("DOMContentLoaded", function () {
    - Autoplay pauses on hover/focus and while the user is dragging.
    ========================================================================== */
 
-(function initAwardShowcase() {
+(async function initAwardShowcase() {
     const root = document.querySelector("#award-showcase");
     const track = document.querySelector("#award-showcase-track");
 
@@ -663,6 +663,20 @@ document.addEventListener("DOMContentLoaded", function () {
         { src: "assets/images/h-a-2.png", alt: "Literary Honors winners with their awards" },
         { src: "assets/images/h-a-3.png", alt: "Literary Honors award recipients celebrating" }
     ];
+
+    try {
+        const response = await fetch(sitePath("api/public-winners.php"));
+        const payload = response.ok ? await response.json() : null;
+        const winners = payload?.winners?.filter((winner) => winner.showOnHomepage).slice(0, 3) ?? [];
+        if (winners.length) {
+            AWARDS.splice(0, AWARDS.length, ...winners.map((winner) => ({
+                src: winner.coverImage,
+                alt: `${winner.bookTitle} by ${winner.authorName}, ${winner.awardYear} ${winner.category} winner`
+            })));
+        }
+    } catch (_) {
+        // The original showcase remains available if the PHP backend is offline.
+    }
 
     const count = AWARDS.length;
     const AUTOPLAY_DELAY = 2200;

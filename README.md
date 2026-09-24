@@ -46,6 +46,11 @@ The review queue provides secure manuscript and cover downloads, a result-date
 email action, and a final score/decision action. In sandbox email log mode,
 these email actions are recorded rather than delivered.
 
+Confirmed winners can be published from their review page. The public Winners
+page fetches entries marked for the archive; the same record can separately be
+marked for homepage use. A published cover is delivered only through the
+public winner-cover endpoint, while all unpublished uploads remain protected.
+
 ## Structure
 
 ```

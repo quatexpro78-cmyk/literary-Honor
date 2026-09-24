@@ -287,4 +287,17 @@
     renderGallery();
     initializeSelects();
     renderWinnerArchive();
+
+    fetch(sitePath("api/public-winners.php"))
+        .then((response) => response.ok ? response.json() : null)
+        .then((payload) => {
+            if (!payload?.winners?.length) return;
+            const published = payload.winners.filter((winner) => winner.showInArchive);
+            data.winners = [...published, ...data.winners];
+            data.years = [...new Set(data.winners.map((winner) => winner.awardYear))].sort((a, b) => b - a);
+            initializeSelects();
+            renderFeaturedWinners();
+            renderWinnerArchive();
+        })
+        .catch(() => {});
 })();
