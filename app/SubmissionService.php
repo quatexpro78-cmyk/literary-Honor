@@ -65,6 +65,19 @@ final class SubmissionService
         }
     }
 
+    public function recordStripeCheckout(int $submissionId, string $checkoutSessionId, int $amountMinor): void
+    {
+        $statement = Database::connection()->prepare(
+            'INSERT INTO payments (submission_id, provider, provider_payment_id, amount_minor, currency, status)
+             VALUES (:submission_id, "stripe", :provider_payment_id, :amount_minor, "USD", "pending")'
+        );
+        $statement->execute([
+            'submission_id' => $submissionId,
+            'provider_payment_id' => $checkoutSessionId,
+            'amount_minor' => $amountMinor,
+        ]);
+    }
+
     /** @param array<string, mixed> $input @param array<string, array<string, mixed>> $files @return array<string, mixed> */
     private function validate(array $input, array $files): array
     {

@@ -8,7 +8,8 @@ use RuntimeException;
 final class StripeCheckout
 {
     /** @param array<string, mixed> $submission */
-    public function create(array $submission): string
+    /** @return array{id: string, url: string} */
+    public function create(array $submission): array
     {
         $secretKey = Config::get('STRIPE_SECRET_KEY');
         if ($secretKey === null || !str_starts_with($secretKey, 'sk_')) {
@@ -44,10 +45,10 @@ final class StripeCheckout
         $status = (int) curl_getinfo($curl, CURLINFO_RESPONSE_CODE);
         curl_close($curl);
         $decoded = is_string($response) ? json_decode($response, true) : null;
-        if ($status < 200 || $status >= 300 || !is_array($decoded) || empty($decoded['url'])) {
+        if ($status < 200 || $status >= 300 || !is_array($decoded) || empty($decoded['id']) || empty($decoded['url'])) {
             throw new RuntimeException('Stripe could not start the secure checkout. Please try again.');
         }
 
-        return (string) $decoded['url'];
+        return ['id' => (string) $decoded['id'], 'url' => (string) $decoded['url']];
     }
 }

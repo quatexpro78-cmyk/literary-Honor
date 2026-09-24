@@ -22,10 +22,12 @@ Composer, SSH, or cPanel Terminal access.
 4. Keep the project files in `public_html`. The included `.htaccess` blocks
    direct web access to `.env` and enables basic security headers.
 
-The submission form now creates a payment-pending record and sends the author
-to Stripe Checkout. Add Stripe **test** keys to `.env` before testing it. A
-successful payment still needs the webhook commit before it becomes a final
-submission and triggers email notifications.
+The submission form creates a payment-pending record and sends the author to
+Stripe Checkout. Add Stripe **test** keys to `.env` before testing it. In the
+Stripe dashboard, add `https://literaryhonor.com/api/stripe-webhook.php` as a
+`checkout.session.completed` webhook endpoint, then save the test signing
+secret as `STRIPE_WEBHOOK_SECRET`. The webhook—not the browser redirect—is
+what marks a paid entry as submitted for review.
 
 ## Structure
 
