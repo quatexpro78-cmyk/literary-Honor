@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/liteduhg/dev.literaryhonors.com
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -R api app assets admin pages storage $DEPLOYPATH
+    - /bin/cp index.html .htaccess $DEPLOYPATH
